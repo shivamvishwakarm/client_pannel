@@ -19,7 +19,7 @@ export default function OrdersPage() {
           
         </button> */}
 
-        <Link className="btn-primary px-4 mb-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300" href={'/products/new'}><svg
+        <Link className="btn-primary px-4 mb-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300" href={'/products/member'}><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
