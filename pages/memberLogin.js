@@ -95,7 +95,7 @@ export default function MemberLogin() {
         <tbody>
           {members.length > 0 &&
             members.map((member) => (
-              <tr className="my-4">
+              <tr key={member._id} className="my-4">
                 <td>{member.omt_id}</td>
                 <td>{member.password}</td>
                 <td>{member.name_of_entrepreneur}</td>

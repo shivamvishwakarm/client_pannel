@@ -1,6 +1,6 @@
 import React from "react";
 
-const UpdateMember = (member) => {
+const UpdateMember = () => {
 
   const [member, setmember] = useState({
     omt_id: '',

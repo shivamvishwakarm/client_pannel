@@ -79,7 +79,7 @@ export default function OdLogin() {
 
         <tbody>  
           {ods.length > 0 && ods.map((od) => (
-          <tr className="border-separate my-4">
+          <tr key={od._id} className="border-separate my-4">
             <td>{od.customer_id}</td>
             <td>{od.password}</td>
             <td>{od.name_of_entrepreneur}</td>

@@ -77,7 +77,7 @@ export default function AgentList() {
         </thead>
         <tbody>
           {agents.length > 0 &&  agents.map((agent) => (
-          <tr className="border-separate my-4"> 
+          <tr key={agent._id} className="border-separate my-4"> 
             <td>{agent.name}</td>
             <td>{agent.email}</td>
             <td>{agent.phone}</td>
