@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
-import { useRouter } from 'next/router';
+import React from "react";
 
+const UpdateMember = (member) => {
 
-export default function ProductForm() {
-  const [goToProducts, setGoToProducts] = useState(false);
-  const router = useRouter();
-
-
-  // saving form to database
-
-  const [formData, setFormData] = useState({
+  const [member, setmember] = useState({
     omt_id: '',
     password: '',
     email_id: '',
@@ -42,42 +35,21 @@ export default function ProductForm() {
     bank_ac: '',
     image1: '',
     image2: ''
-  });
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-    //  console.log(formData)
-      const response = await fetch('/api/member/new/route', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      console.log(data);
-      router.push("/memberLogin");
-    } catch (error) {
-      console.error(error);
-      // Handle errors here
-    }
-  };
-
-
+  })
   return (
     <div className="flex ">
       <div className="max-w-md p-6  rounded-lg max-w-fit shadow-md ">
         {/* h1  */}
-        <form onSubmit={handleSubmit}>
+        {/* onSubmit={handleSubmit} */}
+        <form >
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-gray-700">
                 OMT ID
               </label>
               <input
-                value={formData.omt_id}
-                onChange={(e) => {setFormData({...formData,omt_id: e.target.value})}}
+                value={member.omt_id}
+                onChange={(e) => {setmember({...member,omt_id: e.target.value})}}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="OMT ID"
@@ -88,8 +60,8 @@ export default function ProductForm() {
                 PASSWORD
               </label>
               <input
-                value={formData.password}
-                onChange={(e) => {setFormData({...formData,password: e.target.value})}}
+                value={member.password}
+                onChange={(e) => {setmember({...member,password: e.target.value})}}
                 type="password"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Password"
@@ -102,8 +74,8 @@ export default function ProductForm() {
                 Email Id
               </label>
               <input
-              value={formData.email_id}
-              onChange={(e) => {setFormData({...formData,email_id: e.target.value})}}
+              value={member.email_id}
+              onChange={(e) => {setmember({...member,email_id: e.target.value})}}
                 type="email"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Email Id"
@@ -114,8 +86,8 @@ export default function ProductForm() {
                 Phone Number
               </label>
               <input
-              value={formData.phone_number}
-              onChange={(e) => {setFormData({...formData,phone_number: e.target.value})}}
+              value={member.phone_number}
+              onChange={(e) => {setmember({...member,phone_number: e.target.value})}}
                 type="tel"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Phone Number"
@@ -128,8 +100,8 @@ export default function ProductForm() {
                 Aadhaar Number
               </label>
               <input
-                value={formData.aadhar_no}
-                onChange={(e) => {setFormData({...formData,aadhar_no: e.target.value})}}
+                value={member.aadhar_no}
+                onChange={(e) => {setmember({...member,aadhar_no: e.target.value})}}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Aadhaar Number"
@@ -140,8 +112,8 @@ export default function ProductForm() {
                 PAN Number
               </label>
               <input
-                value={formData.pan_no}
-                onChange={(e) => {setFormData({...formData,pan_no: e.target.value})}}
+                value={member.pan_no}
+                onChange={(e) => {setmember({...member,pan_no: e.target.value})}}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="PAN Number"
@@ -153,8 +125,8 @@ export default function ProductForm() {
               Name of Entrepreneur
             </label>
             <input
-              value={formData.name_of_entrepreneur}
-              onChange={(e) => {setFormData({...formData,name_of_entrepreneur: e.target.value})}}
+              value={member.name_of_entrepreneur}
+              onChange={(e) => {setmember({...member,name_of_entrepreneur: e.target.value})}}
 
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
@@ -166,8 +138,8 @@ export default function ProductForm() {
               Father Name
             </label>
             <input
-            value={formData.father_name}
-            onChange={(e) => {setFormData({...formData,father_name: e.target.value})}}
+            value={member.father_name}
+            onChange={(e) => {setmember({...member,father_name: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Father Name"
@@ -178,8 +150,8 @@ export default function ProductForm() {
               Date of Birth
             </label>
             <input
-            value={formData.date_of_birth}
-            onChange={(e) => {setFormData({...formData,date_of_birth: e.target.value})}}
+            value={member.date_of_birth}
+            onChange={(e) => {setmember({...member,date_of_birth: e.target.value})}}
               type="date"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="YY-MM-DD"
@@ -190,8 +162,8 @@ export default function ProductForm() {
               Social Category of Entrepreneur
             </label>
             <input
-            value={formData.social_category_entrepreneur}
-            onChange={(e) => {setFormData({...formData,social_category_entrepreneur: e.target.value})}}
+            value={member.social_category_entrepreneur}
+            onChange={(e) => {setmember({...member,social_category_entrepreneur: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Social Category of Entrepreneur"
@@ -200,8 +172,8 @@ export default function ProductForm() {
           <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">Gender</label>
             <select
-              value={formData.gender}
-              onChange={(e) => {setFormData({...formData,gender: e.target.value})}}
+              value={member.gender}
+              onChange={(e) => {setmember({...member,gender: e.target.value})}}
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               name="gender"
             >
@@ -214,8 +186,8 @@ export default function ProductForm() {
           <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">Physically Handicapped</label>
             <select
-            value={formData.physically_handicapped}
-            onChange={(e) => {setFormData({...formData,physically_handicapped: e.target.value})}}
+            value={member.physically_handicapped}
+            onChange={(e) => {setmember({...member,physically_handicapped: e.target.value})}}
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               name="gender"
             >
@@ -229,8 +201,8 @@ export default function ProductForm() {
               Name of Enterprise
             </label>
             <input
-            value={formData.name_of_enterprise}
-            onChange={(e) => {setFormData({...formData,name_of_enterprise: e.target.value})}}
+            value={member.name_of_enterprise}
+            onChange={(e) => {setmember({...member,name_of_enterprise: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Name of Enterprise"
@@ -253,8 +225,8 @@ export default function ProductForm() {
               Village/Town
             </label>
             <input
-            value={formData.r_village}
-            onChange={(e) => {setFormData({...formData,r_village: e.target.value})}}
+            value={member.r_village}
+            onChange={(e) => {setmember({...member,r_village: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Village/Town"
@@ -265,8 +237,8 @@ export default function ProductForm() {
               Block
             </label>
             <input
-            value={formData.r_block}
-            onChange={(e) => {setFormData({...formData,r_block: e.target.value})}}
+            value={member.r_block}
+            onChange={(e) => {setmember({...member,r_block: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Block"
@@ -278,8 +250,8 @@ export default function ProductForm() {
               City
             </label>
             <input
-            value={formData.r_city}
-            onChange={(e) => {setFormData({...formData,r_city: e.target.value})}}
+            value={member.r_city}
+            onChange={(e) => {setmember({...member,r_city: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="City"
@@ -291,8 +263,8 @@ export default function ProductForm() {
               District
             </label>
             <input
-            value={formData.r_district}
-            onChange={(e) => {setFormData({...formData,r_district: e.target.value})}}
+            value={member.r_district}
+            onChange={(e) => {setmember({...member,r_district: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="District"
@@ -304,8 +276,8 @@ export default function ProductForm() {
               State
             </label>
             <input
-            value={formData.r_state}
-            onChange={(e) => {setFormData({...formData,r_state: e.target.value})}}
+            value={member.r_state}
+            onChange={(e) => {setmember({...member,r_state: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="State"
@@ -317,8 +289,8 @@ export default function ProductForm() {
               Pin Code
             </label>
             <input
-            value={formData.r_pincode}
-            onChange={(e) => {setFormData({...formData,r_pincode: e.target.value})}}
+            value={member.r_pincode}
+            onChange={(e) => {setmember({...member,r_pincode: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Pin Code"
@@ -332,8 +304,8 @@ export default function ProductForm() {
               Village/Town
             </label>
             <input
-            value={formData.o_village}
-            onChange={(e) => {setFormData({...formData,o_village: e.target.value})}}
+            value={member.o_village}
+            onChange={(e) => {setmember({...member,o_village: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Village/Town"
@@ -344,8 +316,8 @@ export default function ProductForm() {
               Block
             </label>
             <input
-            value={formData.o_block}
-            onChange={(e) => {setFormData({...formData,o_block: e.target.value})}}
+            value={member.o_block}
+            onChange={(e) => {setmember({...member,o_block: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Block"
@@ -357,8 +329,8 @@ export default function ProductForm() {
               City
             </label>
             <input
-            value={formData.o_city}
-            onChange={(e) => {setFormData({...formData,o_city: e.target.value})}}
+            value={member.o_city}
+            onChange={(e) => {setmember({...member,o_city: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="City"
@@ -370,8 +342,8 @@ export default function ProductForm() {
               District
             </label>
             <input
-            value={formData.o_district}
-            onChange={(e) => {setFormData({...formData,o_district: e.target.value})}}
+            value={member.o_district}
+            onChange={(e) => {setmember({...member,o_district: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="District"
@@ -383,8 +355,8 @@ export default function ProductForm() {
               State
             </label>
             <input
-            value={formData.o_state}
-            onChange={(e) => {setFormData({...formData,o_state: e.target.value})}}
+            value={member.o_state}
+            onChange={(e) => {setmember({...member,o_state: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="State"
@@ -396,8 +368,8 @@ export default function ProductForm() {
               Pin Code
             </label>
             <input
-            value={formData.o_pincode}
-            onChange={(e) => {setFormData({...formData,o_pincode: e.target.value})}}
+            value={member.o_pincode}
+            onChange={(e) => {setmember({...member,o_pincode: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Pin Code"
@@ -411,8 +383,8 @@ export default function ProductForm() {
               Payment Received
             </label>
             <input
-            value={formData.payment_received}
-            onChange={(e) => {setFormData({...formData,payment_received: e.target.value})}}
+            value={member.payment_received}
+            onChange={(e) => {setmember({...member,payment_received: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Payment Received"
@@ -424,8 +396,8 @@ export default function ProductForm() {
               Payment Awaiting
             </label>
             <input
-            value={formData.payment_awaiting}
-            onChange={(e) => {setFormData({...formData,payment_awaiting: e.target.value})}}
+            value={member.payment_awaiting}
+            onChange={(e) => {setmember({...member,payment_awaiting: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Payment Awaiting"
@@ -437,8 +409,8 @@ export default function ProductForm() {
               Bank Name
             </label>
             <input
-            value={formData.bank_name}
-            onChange={(e) => {setFormData({...formData,bank_name: e.target.value})}}
+            value={member.bank_name}
+            onChange={(e) => {setmember({...member,bank_name: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Bank Name"
@@ -450,8 +422,8 @@ export default function ProductForm() {
               Branch name
             </label>
             <input
-            value={formData.branch_name}
-            onChange={(e) => {setFormData({...formData,branch_name: e.target.value})}}
+            value={member.branch_name}
+            onChange={(e) => {setmember({...member,branch_name: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Branch Name"
@@ -463,8 +435,8 @@ export default function ProductForm() {
               Bank Account Number
             </label>
             <input
-            value={formData.bank_ac}
-            onChange={(e) => {setFormData({...formData,bank_ac: e.target.value})}}
+            value={member.bank_ac}
+            onChange={(e) => {setmember({...member,bank_ac: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Bank Account Number"
@@ -480,8 +452,8 @@ export default function ProductForm() {
               Picture (Upload)
             </label>
             <input
-            value={formData.image1}
-            onChange={(e) => {setFormData({...formData,image1: e.target.value})}}
+            value={member.image1}
+            onChange={(e) => {setmember({...member,image1: e.target.value})}}
              type="file" className="mt-1 block w-full" />
           </div>
 
@@ -490,8 +462,8 @@ export default function ProductForm() {
               Picture (Upload two)
             </label>
             <input
-            value={formData.image2}
-            onChange={(e) => {setFormData({...formData,image2: e.target.value})}}
+            value={member.image2}
+            onChange={(e) => {setmember({...member,image2: e.target.value})}}
              type="file" className="mt-1 block w-full" />
           </div>
 
@@ -507,4 +479,10 @@ export default function ProductForm() {
       </div>
     </div>
   );
-}
+};
+
+export default UpdateMember;
+
+
+
+

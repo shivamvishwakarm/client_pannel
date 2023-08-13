@@ -1,186 +1,83 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
-import Spinner from "@/components/Spinner";
-import { ReactSortable } from "react-sortablejs";
 
-export default function ProductForm({
-  _id,
-  title: existingTitle,
-  description: existingDescription,
-  price: existingPrice,
-  images: existingImages,
-  category: assignedCategory,
-  properties: assignedProperties,
-}) {
-  const [title, setTitle] = useState(existingTitle || "");
-  const [description, setDescription] = useState(existingDescription || "");
-  const [category, setCategory] = useState(assignedCategory || "");
-  const [productProperties, setProductProperties] = useState(
-    assignedProperties || {}
-  );
-  const [price, setPrice] = useState(existingPrice || "");
-  const [images, setImages] = useState(existingImages || []);
-  const [goToProducts, setGoToProducts] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
-  const [categories, setCategories] = useState([]);
+export default function ProductForm() {
+  // saving form to database
   const router = useRouter();
-  useEffect(() => {
-    axios.get("/api/categories").then((result) => {
-      setCategories(result.data);
-    });
-  }, []);
-  async function saveProduct(ev) {
-    ev.preventDefault();
-    const data = {
-      title,
-      description,
-      price,
-      images,
-      category,
-      properties: productProperties,
-    };
-    if (_id) {
-      //update
-      await axios.put("/api/products", { ...data, _id });
-    } else {
-      //create
-      await axios.post("/api/products", data);
-    }
-    setGoToProducts(true);
-  }
-  if (goToProducts) {
-    router.push("/products");
-  }
-  async function uploadImages(ev) {
-    const files = ev.target?.files;
-    if (files?.length > 0) {
-      setIsUploading(true);
-      const data = new FormData();
-      for (const file of files) {
-        data.append("file", file);
-      }
-      const res = await axios.post("/api/upload", data);
-      setImages((oldImages) => {
-        return [...oldImages, ...res.data.links];
+
+  const [odData, setOdData] = useState({
+    customer_id: '',
+    password: '',
+    bank_name: '',
+    branch_name: '',
+    bank_ac: '',
+    avialable_balance: '',
+    email_id: '',
+    phone_number: '',
+    aadhar_no: '',
+    pan_no: '',
+    name_of_entrepreneur: '',
+    father_name: '',
+    date_of_birth: '',
+    social_category_entrepreneur: '',
+    gender: '',
+    physically_handicapped: '',
+    name_of_enterprise: '',
+    r_village: '',
+    r_block: '',
+    r_city: '',
+    r_district: '',
+    r_state: '',
+    r_pincode: '',
+    o_village: '',
+    o_block: '',
+    o_city: '',
+    o_district: '',
+    o_state: '',
+    o_pincode: '',
+    relationship_nominee: '',
+    nominee_name: '',
+    image1: '',
+    image2: ''
+  });
+
+  console.log(odData)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("calling handle submit")
+
+    try {
+      const response = await fetch('/api/od/new/route', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(odData),
       });
-      setIsUploading(false);
-    }
-  }
-  function updateImagesOrder(images) {
-    setImages(images);
-  }
-  function setProductProp(propName, value) {
-    setProductProperties((prev) => {
-      const newProductProps = { ...prev };
-      newProductProps[propName] = value;
-      return newProductProps;
-    });
-  }
 
-  const propertiesToFill = [];
-  if (categories.length > 0 && category) {
-    let catInfo = categories.find(({ _id }) => _id === category);
-    propertiesToFill.push(...catInfo.properties);
-    while (catInfo?.parent?._id) {
-      const parentCat = categories.find(
-        ({ _id }) => _id === catInfo?.parent?._id
-      );
-      propertiesToFill.push(...parentCat.properties);
-      catInfo = parentCat;
+      const data = await response.json();
+      console.log(data);
+      router.push("/odLogin");
+    } catch (error) {
+      console.error(error);
+      // Handle errors here
     }
-  }
-
+  };
   return (
-    // <form onSubmit={saveProduct}>
-    //   <label>Product name</label>
-    //   <input
-    //     type="text"
-    //     placeholder="product name"
-    //     value={title}
-    //     onChange={ev => setTitle(ev.target.value)}/>
-    //   <label>Category</label>
-    //   <select value={category}
-    //           onChange={ev => setCategory(ev.target.value)}>
-    //     <option value="">Uncategorized</option>
-    //     {categories.length > 0 && categories.map(c => (
-    //       <option key={c._id} value={c._id}>{c.name}</option>
-    //     ))}
-    //   </select>
-    //   {propertiesToFill.length > 0 && propertiesToFill.map(p => (
-    //     <div key={p.name} className="">
-    //       <label>{p.name[0].toUpperCase()+p.name.substring(1)}</label>
-    //       <div>
-    //         <select value={productProperties[p.name]}
-    //                 onChange={ev =>
-    //                   setProductProp(p.name,ev.target.value)
-    //                 }
-    //         >
-    //           {p.values.map(v => (
-    //             <option key={v} value={v}>{v}</option>
-    //           ))}
-    //         </select>
-    //       </div>
-    //     </div>
-    //   ))}
-    //   <label>
-    //     Photos
-    //   </label>
-    //   <div className="mb-2 flex flex-wrap gap-1">
-    //     <ReactSortable
-    //       list={images}
-    //       className="flex flex-wrap gap-1"
-    //       setList={updateImagesOrder}>
-    //       {!!images?.length && images.map(link => (
-    //         <div key={link} className="h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200">
-    //           <img src={link} alt="" className="rounded-lg"/>
-    //         </div>
-    //       ))}
-    //     </ReactSortable>
-    //     {isUploading && (
-    //       <div className="h-24 flex items-center">
-    //         <Spinner />
-    //       </div>
-    //     )}
-    //     <label className="w-24 h-24 cursor-pointer text-center flex flex-col items-center justify-center text-sm gap-1 text-primary rounded-sm bg-white shadow-sm border border-primary">
-    //       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-    //         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-    //       </svg>
-    //       <div>
-    //         Add image
-    //       </div>
-    //       <input type="file" onChange={uploadImages} className="hidden"/>
-    //     </label>
-    //   </div>
-    //   <label>Description</label>
-    //   <textarea
-    //     placeholder="description"
-    //     value={description}
-    //     onChange={ev => setDescription(ev.target.value)}
-    //   />
-    //   <label>Price (in USD)</label>
-    //   <input
-    //     type="number" placeholder="price"
-    //     value={price}
-    //     onChange={ev => setPrice(ev.target.value)}
-    //   />
-    //   <button
-    //     type="submit"
-    //     className="btn-primary">
-    //     Save
-    //   </button>
-    // </form>
 
     <div className="flex ">
       <div className="max-w-md p-6  rounded-lg max-w-fit shadow-md ">
         {/* h1  */}
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-gray-700">
 Customer ID
               </label>
               <input
+              value={odData.customer_id}
+              onChange={(e) => {setOdData({...odData, customer_id: e.target.value})}}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Customer ID"
@@ -191,6 +88,8 @@ Customer ID
                 PASSWORD
               </label>
               <input
+              value={odData.password}
+              onChange={(e) => {setOdData({...odData, password: e.target.value})}}
                 type="password"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Password"
@@ -198,12 +97,14 @@ Customer ID
             </div>
           </div>
           
-
+ 
             <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Bank Name
             </label>
             <input
+            value={odData.bank_name}
+            onChange={(e) => {setOdData({...odData, bank_name: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Bank Name"
@@ -215,6 +116,8 @@ Customer ID
               Branch Name
             </label>
             <input
+            value={odData.branch_name}
+            onChange={(e) => {setOdData({...odData, branch_name: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Branch Name"
@@ -226,6 +129,8 @@ Customer ID
               Bank Account Number
             </label>
             <input
+            value={odData.bank_ac}
+            onChange={(e) => {setOdData({...odData, bank_ac: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Bank Account Number"
@@ -236,6 +141,8 @@ Customer ID
               Avialable Balance
             </label>
             <input
+            value={odData.avialable_balance}
+            onChange={(e) => {setOdData({...odData, avialable_balance: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Avialable Balance"
@@ -247,6 +154,8 @@ Customer ID
                 Email Id
               </label>
               <input
+              value={odData.email_id}
+              onChange={(e) => {setOdData({...odData, email_id: e.target.value})}}
                 type="email"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Email Id"
@@ -257,6 +166,8 @@ Customer ID
                 Phone Number
               </label>
               <input
+              value={odData.phone_number}
+              onChange={(e) => {setOdData({...odData, phone_number: e.target.value})}}
                 type="tel"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Phone Number"
@@ -269,6 +180,8 @@ Customer ID
                 Aadhaar Number
               </label>
               <input
+              value={odData.aadhar_no}
+              onChange={(e) => {setOdData({...odData, aadhar_no: e.target.value})}}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Aadhaar Number"
@@ -279,6 +192,8 @@ Customer ID
                 PAN Number
               </label>
               <input
+              value={odData.pan_no}
+              onChange={(e) => {setOdData({...odData, pan_no: e.target.value})}}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="PAN Number"
@@ -290,6 +205,8 @@ Customer ID
               Name of Entrepreneur
             </label>
             <input
+            value={odData.name_of_entrepreneur}
+            onChange={(e) => {setOdData({...odData, name_of_entrepreneur: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Name of Entrepreneur"
@@ -300,6 +217,8 @@ Customer ID
               Father Name
             </label>
             <input
+            value={odData.father_name}
+            onChange={(e) => {setOdData({...odData, father_name: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Father Name"
@@ -310,6 +229,8 @@ Customer ID
               Date of Birth
             </label>
             <input
+            value={odData.date_of_birth}
+            onChange={(e) => {setOdData({...odData, date_of_birth: e.target.value})}}
               type="date"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="YY-MM-DD"
@@ -320,6 +241,8 @@ Customer ID
               Social Category of Entrepreneur
             </label>
             <input
+            value={odData.social_category_entrepreneur}
+            onChange={(e) => {setOdData({...odData, social_category_entrepreneur: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Social Category of Entrepreneur"
@@ -330,6 +253,8 @@ Customer ID
             <select
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               name="gender"
+              value={odData.gender}
+            onChange={(e) => {setOdData({...odData, gender: e.target.value})}}
             >
               <option value="">Select Gender</option>
               <option value="male">Male</option>
@@ -341,7 +266,9 @@ Customer ID
             <label className="text-sm font-medium text-gray-700">Physically Handicapped</label>
             <select
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
-              name="gender"
+              name="physicallyHandicapped"
+              value={odData.physically_handicapped}
+  onChange={(e) => {setOdData({...odData, physically_handicapped: e.target.value})}}
             >
               <option value="no">No</option>
               <option value="yes">Yes</option>
@@ -353,6 +280,8 @@ Customer ID
               Name of Enterprise
             </label>
             <input
+            value={odData.name_of_enterprise}
+            onChange={(e) => {setOdData({...odData, name_of_enterprise: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Name of Enterprise"
@@ -363,6 +292,8 @@ Customer ID
               Type of Organization
             </label>
             <input
+            value={odData.type_of_org}
+            onChange={(e) => {setOdData({...odData, type_of_org: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Type of Organization"
@@ -375,6 +306,8 @@ Customer ID
               Village/Town
             </label>
             <input
+            value={odData.r_village}
+            onChange={(e) => {setOdData({...odData, r_village: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Village/Town"
@@ -385,6 +318,8 @@ Customer ID
               Block
             </label>
             <input
+            value={odData.r_block}
+            onChange={(e) => {setOdData({...odData, r_block: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Block"
@@ -396,6 +331,8 @@ Customer ID
               City
             </label>
             <input
+            value={odData.r_city}
+            onChange={(e) => {setOdData({...odData, r_city: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="City"
@@ -407,6 +344,8 @@ Customer ID
               District
             </label>
             <input
+            value={odData.r_district}
+            onChange={(e) => {setOdData({...odData, r_district: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="District"
@@ -418,6 +357,8 @@ Customer ID
               State
             </label>
             <input
+            value={odData.r_state}
+            onChange={(e) => {setOdData({...odData, r_state: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="State"
@@ -429,6 +370,8 @@ Customer ID
               Pin Code
             </label>
             <input
+            value={odData.r_pincode}
+            onChange={(e) => {setOdData({...odData, r_pincode: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Pin Code"
@@ -442,6 +385,8 @@ Customer ID
               Village/Town
             </label>
             <input
+            value={odData.o_village}
+            onChange={(e) => {setOdData({...odData, o_village: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Village/Town"
@@ -452,6 +397,8 @@ Customer ID
               Block
             </label>
             <input
+            value={odData.o_block}
+            onChange={(e) => {setOdData({...odData, o_block: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Block"
@@ -463,6 +410,8 @@ Customer ID
               City
             </label>
             <input
+            value={odData.o_city}
+            onChange={(e) => {setOdData({...odData, o_city: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="City"
@@ -474,6 +423,8 @@ Customer ID
               District
             </label>
             <input
+            value={odData.o_district}
+            onChange={(e) => {setOdData({...odData, o_district: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="District"
@@ -485,6 +436,8 @@ Customer ID
               State
             </label>
             <input
+            value={odData.o_state}
+            onChange={(e) => {setOdData({...odData, o_state: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="State"
@@ -496,6 +449,8 @@ Customer ID
               Pin Code
             </label>
             <input
+            value={odData.o_pincode}
+            onChange={(e) => {setOdData({...odData, o_pincode: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Pin Code"
@@ -509,6 +464,8 @@ Customer ID
               Relationship with nominee
             </label>
             <input
+            value={odData.relationship_nominee}
+            onChange={(e) => {setOdData({...odData, relationship_nominee: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Relationship with nominee"
@@ -520,30 +477,33 @@ Customer ID
               Nominee name
             </label>
             <input
+            value={odData.nominee_name}
+            onChange={(e) => {setOdData({...odData, nominee_name: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Nominee name"
             />
           </div>
 
-          
-
-
-
-          {/* Other input fields ... */}
-
+         
           <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload)
             </label>
-            <input type="file" className="mt-1 block w-full" />
+            <input 
+            value={odData.image1}
+            onChange={(e) => {setOdData({...odData,image1: e.target.value})}}
+            type="file" className="mt-1 block w-full" />
           </div>
 
           <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload two)
             </label>
-            <input type="file" className="mt-1 block w-full" />
+            <input
+            value={odData.image2}
+            onChange={(e) => {setOdData({...odData,image2: e.target.value})}}
+            type="file" className="mt-1 block w-full" />
           </div>
 
           <div className="mt-6">

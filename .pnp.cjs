@@ -31,16 +31,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@aws-sdk/client-s3", "npm:3.282.0"],\
             ["@next-auth/mongodb-adapter", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:1.1.1"],\
             ["@tailwindcss/forms", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:0.5.4"],\
+            ["@types/sortablejs", "npm:1.15.1"],\
             ["autoprefixer", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:10.4.14"],\
             ["axios", "npm:1.3.4"],\
             ["eslint", "npm:8.35.0"],\
             ["eslint-config-next", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:13.2.3"],\
             ["mime-types", "npm:2.1.35"],\
-            ["mongodb", "virtual:523b4ba30100d03882b1d6ecb368d5405709f5cec8ab930e20c2cedf19670337f23a50080e027f999c7375420a54d6ed75325fbbdb894092c2d085c5e9ce05f3#npm:5.1.0"],\
-            ["mongoose", "npm:7.0.0"],\
+            ["mongodb", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:5.1.0"],\
+            ["mongoose", "npm:7.4.2"],\
             ["multiparty", "npm:4.2.3"],\
             ["next", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:13.2.3"],\
             ["next-auth", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:4.20.1"],\
+            ["nodemailer", "npm:6.9.4"],\
             ["postcss", "npm:8.4.27"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:18.2.0"],\
@@ -1466,7 +1468,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@next-auth/mongodb-adapter", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:1.1.1"],\
             ["@types/mongodb", null],\
             ["@types/next-auth", null],\
-            ["mongodb", "virtual:523b4ba30100d03882b1d6ecb368d5405709f5cec8ab930e20c2cedf19670337f23a50080e027f999c7375420a54d6ed75325fbbdb894092c2d085c5e9ce05f3#npm:5.1.0"],\
+            ["mongodb", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:5.1.0"],\
             ["next-auth", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:4.20.1"]\
           ],\
           "packagePeers": [\
@@ -1762,6 +1764,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-18.14.6-7d0665d471-2f88f482ca.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:18.14.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/sortablejs", [\
+        ["npm:1.15.1", {\
+          "packageLocation": "./.yarn/cache/@types-sortablejs-npm-1.15.1-ea248d6e76-242c0350f6.zip/node_modules/@types/sortablejs/",\
+          "packageDependencies": [\
+            ["@types/sortablejs", "npm:1.15.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2326,6 +2337,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["bson", "npm:5.0.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:5.4.0", {\
+          "packageLocation": "./.yarn/cache/bson-npm-5.4.0-2f854c8216-1c07e3d09f.zip/node_modules/bson/",\
+          "packageDependencies": [\
+            ["bson", "npm:5.4.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["buffer", [\
@@ -2810,16 +2828,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@aws-sdk/client-s3", "npm:3.282.0"],\
             ["@next-auth/mongodb-adapter", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:1.1.1"],\
             ["@tailwindcss/forms", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:0.5.4"],\
+            ["@types/sortablejs", "npm:1.15.1"],\
             ["autoprefixer", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:10.4.14"],\
             ["axios", "npm:1.3.4"],\
             ["eslint", "npm:8.35.0"],\
             ["eslint-config-next", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:13.2.3"],\
             ["mime-types", "npm:2.1.35"],\
-            ["mongodb", "virtual:523b4ba30100d03882b1d6ecb368d5405709f5cec8ab930e20c2cedf19670337f23a50080e027f999c7375420a54d6ed75325fbbdb894092c2d085c5e9ce05f3#npm:5.1.0"],\
-            ["mongoose", "npm:7.0.0"],\
+            ["mongodb", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:5.1.0"],\
+            ["mongoose", "npm:7.4.2"],\
             ["multiparty", "npm:4.2.3"],\
             ["next", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:13.2.3"],\
             ["next-auth", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:4.20.1"],\
+            ["nodemailer", "npm:6.9.4"],\
             ["postcss", "npm:8.4.27"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:18.2.0"],\
@@ -4903,10 +4923,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:523b4ba30100d03882b1d6ecb368d5405709f5cec8ab930e20c2cedf19670337f23a50080e027f999c7375420a54d6ed75325fbbdb894092c2d085c5e9ce05f3#npm:5.1.0", {\
-          "packageLocation": "./.yarn/__virtual__/mongodb-virtual-ad92424c7c/0/cache/mongodb-npm-5.1.0-2eee478213-993c14299a.zip/node_modules/mongodb/",\
+        ["npm:5.7.0", {\
+          "packageLocation": "./.yarn/cache/mongodb-npm-5.7.0-c5e415a2e7-16357b6229.zip/node_modules/mongodb/",\
           "packageDependencies": [\
-            ["mongodb", "virtual:523b4ba30100d03882b1d6ecb368d5405709f5cec8ab930e20c2cedf19670337f23a50080e027f999c7375420a54d6ed75325fbbdb894092c2d085c5e9ce05f3#npm:5.1.0"],\
+            ["mongodb", "npm:5.7.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:5.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/mongodb-virtual-6dc55c6252/0/cache/mongodb-npm-5.1.0-2eee478213-993c14299a.zip/node_modules/mongodb/",\
+          "packageDependencies": [\
+            ["mongodb", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:5.1.0"],\
             ["@aws-sdk/credential-providers", null],\
             ["@types/aws-sdk__credential-providers", null],\
             ["@types/mongodb-client-encryption", null],\
@@ -4927,6 +4954,39 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "snappy"\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["virtual:d0cf582de895e62953c81ce7ab1a408175da60784650b2939a6701a3e2b010f4c727d233f3f39d449e394e9ee90a709f72fd9dc5e400cff7ac78e132b6b47f51#npm:5.7.0", {\
+          "packageLocation": "./.yarn/__virtual__/mongodb-virtual-7d609f886f/0/cache/mongodb-npm-5.7.0-c5e415a2e7-16357b6229.zip/node_modules/mongodb/",\
+          "packageDependencies": [\
+            ["mongodb", "virtual:d0cf582de895e62953c81ce7ab1a408175da60784650b2939a6701a3e2b010f4c727d233f3f39d449e394e9ee90a709f72fd9dc5e400cff7ac78e132b6b47f51#npm:5.7.0"],\
+            ["@aws-sdk/credential-providers", null],\
+            ["@mongodb-js/zstd", null],\
+            ["@types/aws-sdk__credential-providers", null],\
+            ["@types/kerberos", null],\
+            ["@types/mongodb-client-encryption", null],\
+            ["@types/mongodb-js__zstd", null],\
+            ["@types/snappy", null],\
+            ["bson", "npm:5.4.0"],\
+            ["kerberos", null],\
+            ["mongodb-client-encryption", null],\
+            ["mongodb-connection-string-url", "npm:2.6.0"],\
+            ["saslprep", "npm:1.0.3"],\
+            ["snappy", null],\
+            ["socks", "npm:2.7.1"]\
+          ],\
+          "packagePeers": [\
+            "@aws-sdk/credential-providers",\
+            "@mongodb-js/zstd",\
+            "@types/aws-sdk__credential-providers",\
+            "@types/kerberos",\
+            "@types/mongodb-client-encryption",\
+            "@types/mongodb-js__zstd",\
+            "@types/snappy",\
+            "kerberos",\
+            "mongodb-client-encryption",\
+            "snappy"\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["mongodb-connection-string-url", [\
@@ -4941,13 +5001,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["mongoose", [\
-        ["npm:7.0.0", {\
-          "packageLocation": "./.yarn/cache/mongoose-npm-7.0.0-523b4ba301-a43eb0ae62.zip/node_modules/mongoose/",\
+        ["npm:7.4.2", {\
+          "packageLocation": "./.yarn/cache/mongoose-npm-7.4.2-d0cf582de8-2bf73cea4b.zip/node_modules/mongoose/",\
           "packageDependencies": [\
-            ["mongoose", "npm:7.0.0"],\
-            ["bson", "npm:5.0.1"],\
+            ["mongoose", "npm:7.4.2"],\
+            ["bson", "npm:5.4.0"],\
             ["kareem", "npm:2.5.1"],\
-            ["mongodb", "virtual:523b4ba30100d03882b1d6ecb368d5405709f5cec8ab930e20c2cedf19670337f23a50080e027f999c7375420a54d6ed75325fbbdb894092c2d085c5e9ce05f3#npm:5.1.0"],\
+            ["mongodb", "virtual:d0cf582de895e62953c81ce7ab1a408175da60784650b2939a6701a3e2b010f4c727d233f3f39d449e394e9ee90a709f72fd9dc5e400cff7ac78e132b6b47f51#npm:5.7.0"],\
             ["mpath", "npm:0.9.0"],\
             ["mquery", "npm:5.0.0"],\
             ["ms", "npm:2.1.3"],\
@@ -5130,7 +5190,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cookie", "npm:0.5.0"],\
             ["jose", "npm:4.13.1"],\
             ["next", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:13.2.3"],\
-            ["nodemailer", null],\
+            ["nodemailer", "npm:6.9.4"],\
             ["oauth", "npm:0.9.15"],\
             ["openid-client", "npm:5.4.0"],\
             ["preact", "npm:10.13.0"],\
@@ -5177,6 +5237,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/node-releases-npm-2.0.13-1f2e177887-17ec8f315d.zip/node_modules/node-releases/",\
           "packageDependencies": [\
             ["node-releases", "npm:2.0.13"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["nodemailer", [\
+        ["npm:6.9.4", {\
+          "packageLocation": "./.yarn/cache/nodemailer-npm-6.9.4-4f1ce8ca42-1a61039c9c.zip/node_modules/nodemailer/",\
+          "packageDependencies": [\
+            ["nodemailer", "npm:6.9.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5878,7 +5947,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-sortablejs", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:6.1.4"],\
             ["@types/react", null],\
             ["@types/react-dom", null],\
-            ["@types/sortablejs", null],\
+            ["@types/sortablejs", "npm:1.15.1"],\
             ["classnames", "npm:2.3.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:18.2.0"],\

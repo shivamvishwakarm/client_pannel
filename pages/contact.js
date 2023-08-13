@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "@/components/Layout";
 import { useState } from "react";
+import axios from 'axios';
 
 export default function Contact() {
 
@@ -19,12 +20,22 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here, e.g., sending emails
-    console.log(formData); // Replace with your actual submission logic
-  };
+    const { senderAddress, senderEmail, senderPhone, recipientEmail } = formData;
+    try {
+      const response = await axios.post('/api/send-mail', {
+        senderEmail,
+        recipientEmail,
+        senderAddress,
+        senderPhone,
+      });
 
+      console.log('Email sent:', response.data);
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
 
   return (
    

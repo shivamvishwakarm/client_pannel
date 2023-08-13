@@ -1,33 +1,49 @@
 import React from "react";
 import Layout from "@/components/Layout";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function AgentForm() {
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
-    senderAddress: '',
-    senderEmail: '',
-    senderPhone: '',
-    recipientEmail: '',
+    name: '',
+    email: '',
+    password: '',
+    phone: '',
+    pincode: '',
+    address: ''
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  console.log(formData)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here, e.g., sending emails
-    console.log(formData); // Replace with your actual submission logic
-  };
 
+    try {
+      console.log("before api call")
+      const response = await fetch('/api/agent/new/route', {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(response);
+
+      const data = await response.json();
+      console.log(data);
+      router.push("/agentList");
+    } catch (error) {
+      console.error(error);
+      // Handle errors here
+    }
+  };
 
   return (
-<>
+<>  
+<form onSubmit={handleSubmit}>
       <div className="flex justify-center ">
       <div className="max-w-lg p-6 bg-transparent rounded-lg shadow-md w-full">
         
@@ -38,8 +54,8 @@ export default function AgentForm() {
             name="name"
             className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
             placeholder="Enter your name"
-            value={formData.senderEmail}
-            onChange={handleInputChange}
+            value={formData.name}
+            onChange={(e) => {setFormData({...formData,name: e.target.value})}}
           />
         </div>
         <div className="mb-4">
@@ -49,8 +65,8 @@ export default function AgentForm() {
             name="senderEmail"
             className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
             placeholder="Enter email address"
-            value={formData.senderEmail}
-            onChange={handleInputChange}
+            value={formData.email}
+            onChange={(e) => {setFormData({...formData,email: e.target.value})}}
           />
         </div>
         <div className="mb-4">
@@ -60,8 +76,8 @@ export default function AgentForm() {
             name="password"
             className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
             placeholder="Enter your password"
-            value={formData.senderEmail}
-            onChange={handleInputChange}
+            value={formData.password}
+            onChange={(e) => {setFormData({...formData,password: e.target.value})}}
           />
         </div>
         <div className="mb-4">
@@ -71,11 +87,11 @@ export default function AgentForm() {
             name="senderPhone"
             className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
             placeholder="Enter phone number"
-            value={formData.senderPhone}
-            onChange={handleInputChange}
+            value={formData.phone}
+            onChange={(e) => {setFormData({...formData,phone: e.target.value})}}
           />
         </div>
-        <form onSubmit={handleSubmit}>
+        
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">Pincode</label>
             <input
@@ -83,9 +99,9 @@ export default function AgentForm() {
               name="recipientEmail"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Enter your pincode"
-              value={formData.recipientEmail}
-              onChange={handleInputChange}
-            />
+              value={formData.pincode}
+              onChange={(e) => {setFormData({...formData,pincode: e.target.value})}}
+              />
           </div>
           <div className="mb-4">
           <p className="text-gray-600">Address:</p>
@@ -93,8 +109,8 @@ export default function AgentForm() {
             name="senderAddress"
             className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
             placeholder="Enter address"
-            value={formData.senderAddress}
-            onChange={handleInputChange}
+            value={formData.address}
+            onChange={(e) => {setFormData({...formData,address: e.target.value})}}
           />
         </div>
           <button
@@ -103,11 +119,10 @@ export default function AgentForm() {
           >
             Send Message
           </button>
-        </form>
       </div>
     </div>
 
-    
+    </form>
     </>
  
   );
