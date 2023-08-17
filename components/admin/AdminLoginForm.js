@@ -1,57 +1,15 @@
 import React from 'react'
-import { router } from 'next/router';
-import { useState } from 'react';
-import { useSession, signIn, signOut } from "next-auth/react"
 
-
-export const Login = () => {
-
-
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    console.log('userName:', userName);
-    console.log('password:', password);
-
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userName, password }),
-      });
-
-      console.log(response);
-      if (response.ok) {
-        console.log('Login successful!');
-        signIn('credentials', { userName, password });
-        // Handle successful login, e.g., redirect the user
-        // You can implement this behavior based on your requirements
-      } else {
-        const data = await response.json();
-        console.log('Login error:', data.message);
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-    }
-  };
-
-
-
-
-
+export const LoginForm = ({ header, handleSubmit, setUserName, setPassword }) => {
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <div>
+        <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-            Sign In To Your Administrator Account
+            {header}
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -69,7 +27,7 @@ export const Login = () => {
               <div>
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                 <input
-                  type="password"
+                  type="text"
                   name="password"
                   id="password"
                   placeholder="••••••••"
@@ -91,8 +49,6 @@ export const Login = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-export default Login;
-
+    </div>
+  )
+}

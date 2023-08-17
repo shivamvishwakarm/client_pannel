@@ -57,7 +57,7 @@ export default function ProductForm() {
 
       const data = await response.json();
       console.log(data);
-      router.push("/memberLogin");
+      router.push("/admin/memberLogin");
     } catch (error) {
       console.error(error);
       // Handle errors here

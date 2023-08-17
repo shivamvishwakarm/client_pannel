@@ -1,20 +1,18 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Link from "next/link"
-import agent from "./products/agent";
+import Link from "next/link";
 
-export default function AgentList() {
+export default function OdLogin() {
 
-  const [agents, setAgents] = useState([]);
+  const [ods, setOds] = useState([]);
 
   useEffect(() => {
     try {
       const fetchMembers = async () => {
-        const response = await fetch(`/api/getAgent/route`);
+        const response = await fetch(`/api/getOd/route`);
         const data = await response.json();
         
-        setAgents(data);
+        setOds(data);
       };
       fetchMembers();
     } catch (error) {
@@ -24,18 +22,18 @@ export default function AgentList() {
 
 
   // delete request to delete a member
-  const handleDelete = async (agents) => {
+  const handleDelete = async (ods) => {
     const hasConfirmed = confirm(
       "Are you sure you want to delete?"
     );
 
     if (hasConfirmed) {
       try {
-        await fetch(`/api/delAgent/${agents._id.toString()}`, {
+        await fetch(`/api/delOd/${ods._id.toString()}`, {
           method: "DELETE",
         }); 
 
-        const filteredPosts = agents.filter((item) => item._id !== agents._id);
+        const filteredPosts = ods.filter((item) => item._id !== ods._id);
 
         setMyPosts(filteredPosts);
       } catch (error) {
@@ -45,11 +43,12 @@ export default function AgentList() {
   };
 
 
+
   return (
     <Layout>
       <div className="flex flex-row justify-between">
-        <h1>Agent List</h1>
-        <Link className="btn-primary px-4 mb-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300" href={'/products/agent'}><svg
+        <h1>OD Login</h1>
+        <Link className="btn-primary px-4 mb-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300" href={'/admin/products/od'}><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -67,22 +66,25 @@ export default function AgentList() {
       <table className="basic">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Password</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>NAME</th>
+            <th>AADHAAR NO.</th>
+            <th>PAN NO.</th>
             <th>STATUS</th>
             <th>ACTION</th>
           </tr>
         </thead>
-        <tbody>
-          {agents.length > 0 &&  agents.map((agent) => (
-          <tr key={agent._id} className="border-separate my-4"> 
-            <td>{agent.name}</td>
-            <td>{agent.email}</td>
-            <td>{agent.phone}</td>
-            <td>{agent.password}</td>
-         
+
+
+        <tbody>  
+          {ods.length > 0 && ods.map((od) => (
+          <tr key={od._id} className="border-separate my-4">
+            <td>{od.customer_id}</td>
+            <td>{od.password}</td>
+            <td>{od.name_of_entrepreneur}</td>
+            <td>{od.aadhar_no}</td>
+            <td>{od.pan_no}</td>
             <td>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -129,8 +131,7 @@ export default function AgentList() {
                   stroke-width="1.5"
                   stroke="red"
                   class="w-6 h-6"
-                  onClick={() => handleDelete(agent)}
-
+                  onClick={() => handleDelete(od)}
                 >
                   <path
                     stroke-linecap="round"

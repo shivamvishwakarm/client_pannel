@@ -1,18 +1,20 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import axios from "axios";
+import Link from "next/link"
+import agent from "./products/agent";
 
-export default function OdLogin() {
+export default function AgentList() {
 
-  const [ods, setOds] = useState([]);
+  const [agents, setAgents] = useState([]);
 
   useEffect(() => {
     try {
       const fetchMembers = async () => {
-        const response = await fetch(`/api/getOd/route`);
+        const response = await fetch(`/api/getAgent/route`);
         const data = await response.json();
         
-        setOds(data);
+        setAgents(data);
       };
       fetchMembers();
     } catch (error) {
@@ -22,18 +24,18 @@ export default function OdLogin() {
 
 
   // delete request to delete a member
-  const handleDelete = async (ods) => {
+  const handleDelete = async (agents) => {
     const hasConfirmed = confirm(
       "Are you sure you want to delete?"
     );
 
     if (hasConfirmed) {
       try {
-        await fetch(`/api/delOd/${ods._id.toString()}`, {
+        await fetch(`/api/delAgent/${agents._id.toString()}`, {
           method: "DELETE",
         }); 
 
-        const filteredPosts = ods.filter((item) => item._id !== ods._id);
+        const filteredPosts = agents.filter((item) => item._id !== agents._id);
 
         setMyPosts(filteredPosts);
       } catch (error) {
@@ -43,12 +45,11 @@ export default function OdLogin() {
   };
 
 
-
   return (
     <Layout>
       <div className="flex flex-row justify-between">
-        <h1>OD Login</h1>
-        <Link className="btn-primary px-4 mb-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300" href={'/products/od'}><svg
+        <h1>Agent List</h1>
+        <Link className="btn-primary px-4 mb-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300" href={'/admin/products/agent'}><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -66,25 +67,22 @@ export default function OdLogin() {
       <table className="basic">
         <thead>
           <tr>
-            <th>USERNAME</th>
-            <th>PASSWORD</th>
-            <th>NAME</th>
-            <th>AADHAAR NO.</th>
-            <th>PAN NO.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Password</th>
             <th>STATUS</th>
             <th>ACTION</th>
           </tr>
         </thead>
-
-
-        <tbody>  
-          {ods.length > 0 && ods.map((od) => (
-          <tr key={od._id} className="border-separate my-4">
-            <td>{od.customer_id}</td>
-            <td>{od.password}</td>
-            <td>{od.name_of_entrepreneur}</td>
-            <td>{od.aadhar_no}</td>
-            <td>{od.pan_no}</td>
+        <tbody>
+          {agents.length > 0 &&  agents.map((agent) => (
+          <tr key={agent._id} className="border-separate my-4"> 
+            <td>{agent.name}</td>
+            <td>{agent.email}</td>
+            <td>{agent.phone}</td>
+            <td>{agent.password}</td>
+         
             <td>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +129,8 @@ export default function OdLogin() {
                   stroke-width="1.5"
                   stroke="red"
                   class="w-6 h-6"
-                  onClick={() => handleDelete(od)}
+                  onClick={() => handleDelete(agent)}
+
                 >
                   <path
                     stroke-linecap="round"

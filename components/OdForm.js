@@ -6,6 +6,7 @@ export default function ProductForm() {
   const router = useRouter();
 
   const [odData, setOdData] = useState({
+    role:'od',
     customer_id: '',
     password: '',
     bank_name: '',

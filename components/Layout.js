@@ -2,22 +2,36 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import Nav from "@/components/Nav";
 import {useState} from "react";
 import Logo from "@/components/Logo";
-import Login from "./Login";
+import jwt from 'jsonwebtoken';
+import { useEffect } from "react";
 
-export default function Layout({children}) {
+
+
+export default function Layout({children, userRole}) {
   const [showNav,setShowNav] = useState(false);
-  const { data: session } = useSession();
-  // if (!session) {
-  //   return (
-  //     <div className="bg-bgGray w-screen h-screen flex items-center ">
-  //       {/* <Login /> */}
-  //       <div className="text-center w-full">
-  //         <button onClick={() => signIn('google')} className="bg-violet-600 p-2 px-4 rounded-lg">Login with Google</button>
-  //       </div>
-  //     </div>
+  // const [userData, setUserData] = useState(null);
 
-  //   );
-  // }
+  // useEffect(() => {
+  //   // Retrieve the token from localStorage
+  //   const token = localStorage.getItem('token');
+
+  //   if (token) {
+  //     try {
+  //       // Verify and decode the JWT token
+  //       const decodedToken = jwt.verify(token, 'apprequirepass');
+  //       setUserData(decodedToken);
+  //     } catch (error) {
+  //       // Token is invalid or expired
+  //       console.log("token is invalid or expired"  + error);
+  //     }
+  //   }
+  // }, []);
+
+
+  // console.log(userData);
+
+  // userRole is a dummy variable for now
+  const role = "od";
 
   return (
     <div className="bg-bgGray min-h-screen ">
@@ -28,11 +42,11 @@ export default function Layout({children}) {
           </svg>
         </button>
         <div className="flex grow justify-center mr-6">
-          <Logo />
+          <Logo userRole={role}/>
         </div>
       </div>
       <div className="flex">
-        <Nav show={showNav} />
+        <Nav show={showNav} userRole={role} />
         <div className="flex-grow p-4">
           {children}
         </div>

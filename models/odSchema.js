@@ -2,6 +2,10 @@
 import mongoose, {Schema, model, models} from "mongoose";
 
 const OD = new Schema({
+    role: {
+      type: String,
+      require: true,
+    },
     customer_id: {
       type: String,
       required: true,

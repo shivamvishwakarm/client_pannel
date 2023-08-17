@@ -8,7 +8,7 @@ export default function Home() {
     <Layout>
       <div className="text-blue-900 flex justify-between">
         <h2>
-          Hello,👋 
+          Hello, Admin👋 
         </h2>
         {/* <div className="flex bg-gray-300 gap-1 text-black rounded-lg overflow-hidden">
           <Image  width={32} height={32}  alt="" className="w-6 h-6" />
