@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import Logo from '@/components/Logo';
 import Layout from '@/components/Layout';
-import { useAuth } from '../../components/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { router } from 'next/router';
 import Image from 'next/image';
 
