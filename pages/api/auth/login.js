@@ -1,6 +1,5 @@
 import odMember from "@/models/odSchema";
 import connectDB from "@/lib/mongoose";
-import jwt from 'jsonwebtoken';
 
 
 
