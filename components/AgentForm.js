@@ -34,7 +34,7 @@ export default function AgentForm() {
 
       const data = await response.json();
       console.log(data);
-      router.push("/agentList");
+      router.push("/admin/agentList");
     } catch (error) {
       console.error(error);
       // Handle errors here

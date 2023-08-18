@@ -1,37 +1,18 @@
-import { useSession, signIn, signOut } from "next-auth/react"
 import Nav from "@/components/Nav";
 import {useState} from "react";
 import Logo from "@/components/Logo";
-import jwt from 'jsonwebtoken';
-import { useEffect } from "react";
+import { useAuth } from '@/pages/od/authContext';
+
 
 
 
 export default function Layout({children, userRole}) {
   const [showNav,setShowNav] = useState(false);
-  // const [userData, setUserData] = useState(null);
 
-  // useEffect(() => {
-  //   // Retrieve the token from localStorage
-  //   const token = localStorage.getItem('token');
-
-  //   if (token) {
-  //     try {
-  //       // Verify and decode the JWT token
-  //       const decodedToken = jwt.verify(token, 'apprequirepass');
-  //       setUserData(decodedToken);
-  //     } catch (error) {
-  //       // Token is invalid or expired
-  //       console.log("token is invalid or expired"  + error);
-  //     }
-  //   }
-  // }, []);
-
-
-  // console.log(userData);
+  const { user, setLogin } = useAuth();
 
   // userRole is a dummy variable for now
-  const role = "od";
+  const role = user.role;
 
   return (
     <div className="bg-bgGray min-h-screen ">

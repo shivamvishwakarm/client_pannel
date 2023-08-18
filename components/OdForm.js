@@ -59,7 +59,7 @@ export default function ProductForm() {
 
       const data = await response.json();
       console.log(data);
-      router.push("/odLogin");
+      router.push("/admin/odLogin");
     } catch (error) {
       console.error(error);
       // Handle errors here

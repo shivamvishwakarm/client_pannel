@@ -13,6 +13,9 @@ export const Od_login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
+  const adminName = 'personal';
+  const adminPassword = 'password';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

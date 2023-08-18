@@ -2,9 +2,10 @@ import React from 'react'
 import { useState } from 'react';
 import Layout from '@/components/Layout';
 import { useAuth } from './authContext';
+import Image from 'next/image';
 
 
-export const profile = () => {
+export const Profile = () => {
   const [showNav, setShowNav] = useState(false);
   const { user, login, logout } = useAuth();
   const od_user = {...user};
@@ -15,7 +16,8 @@ export const profile = () => {
       <div className="container flex">
         <div className=" p-8">
           {/* User Image */}
-          <img src="/photo.jpg" alt="User" className="w-40 h-50 rectangle-full border-2	border-black	" />
+          <Image src="/photo.jpg" alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
+          {/* <img src="/photo.jpg" alt="User" className="w-40 h-50 rectangle-full border-2	border-black	" /> */}
         </div>
 
 
@@ -56,4 +58,4 @@ export const profile = () => {
 }
 
 
-export default profile;
+export default Profile;

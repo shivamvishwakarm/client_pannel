@@ -1,19 +1,18 @@
 import React from 'react'
-import Navbar from './Navbar'
 import { useState } from 'react';
 import Logo from '@/components/Logo';
 import Layout from '@/components/Layout';
-import Image from 'next/image';
 import { useAuth } from './authContext';
 import { router } from 'next/router';
+import Image from 'next/image';
 
-export const dashboard = () => {
+export const Dashboard = () => {
 
   const [showNav, setShowNav] = useState(false);
   //   const { data: session } = useSession();
   const { user, setLogin } = useAuth();
   const od_user = {...user};
-  console.log('od_user:', od_user);
+  console.log('od_user:', od_user.role);
 
   // if(!login) return router.push('/od/dashboard'); // redirect to dashboard
 
@@ -23,7 +22,8 @@ export const dashboard = () => {
       <div className="container flex">
         <div className=" p-8">
           {/* User Image */}
-          <img src="/photo.jpg" alt="User" className="w-48 h-48 rectangle-full border-2	border-black	" />
+          <Image src="/photo.jpg" alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
+          {/* <img src="/photo.jpg" alt="User" className="w-48 h-48 rectangle-full border-2	border-black	" /> */}
         </div>
         <div className="w-[50rem] p-8">
           {/* Account Statement */}
@@ -49,7 +49,7 @@ export const dashboard = () => {
                 <p className='px-2'>{od_user.bank_name}</p>
               </div>
               <div className='flex px-2 py-2'>
-                <h4 className='font-bold'>Father's Name: </h4>
+                <h4 className='font-bold'>Father Name: </h4>
                 <p className='px-2'>{od_user.father_name}</p>
               </div>
               <div className='flex px-2 py-2'>
@@ -144,4 +144,4 @@ export const dashboard = () => {
 }
 
 
-export default dashboard;
+export default Dashboard;

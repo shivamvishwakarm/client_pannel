@@ -4,7 +4,7 @@ import Layout from '@/components/Layout';
 import { useAuth } from './authContext';
 
 
-export const myaccount = () => {
+export const Myaccount = () => {
   const [showNav, setShowNav] = useState(false);
   const { user, login, logout } = useAuth();
   const od_user = {...user};
@@ -56,4 +56,4 @@ export const myaccount = () => {
 }
 
 
-export default myaccount;
+export default Myaccount;
