@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 import Logo from "@/components/Logo";
-import { render } from "react-dom";
 
 export default function Nav({ show, userRole }) {
   const inactiveLink = "flex gap-1 p-1";
