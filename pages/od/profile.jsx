@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import Layout from '@/components/Layout';
-import { useAuth } from './authContext';
+import { useAuth } from '../../components/AuthContext';
 import Image from 'next/image';
 
 

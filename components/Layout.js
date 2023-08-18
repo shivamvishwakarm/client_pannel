@@ -1,7 +1,7 @@
 import Nav from "@/components/Nav";
 import {useState} from "react";
 import Logo from "@/components/Logo";
-import { useAuth } from '@/pages/od/authContext';
+import { useAuth } from '@/components/AuthContext';
 
 
 
@@ -12,7 +12,8 @@ export default function Layout({children, userRole}) {
   const { user, setLogin } = useAuth();
 
   // userRole is a dummy variable for now
-  const role = user.role;
+  // const role = user.role;
+  const role =  "admin";
 
   return (
     <div className="bg-bgGray min-h-screen ">
