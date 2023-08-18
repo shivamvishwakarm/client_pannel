@@ -1,9 +1,20 @@
 import Layout from "@/components/Layout";
-// import { useSession } from "next-auth/react";
-import Image from "next/image";
+import { useAdmin } from "@/context/AdminContext";
+import AdminLogin from "./admin-login";
+
 
 export default function Home() {
-  // const { data: session } = useSession();
+  
+
+  const {login } = useAdmin();
+
+  if(!login){
+    return (
+      <AdminLogin/>
+    )
+  }
+
+
   return (
     <Layout>
       <div className="text-blue-900 flex justify-between">

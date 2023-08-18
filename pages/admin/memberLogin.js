@@ -2,11 +2,16 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"; 
+import { useAdmin } from "@/context/AdminContext"; // import the context
+import AdminLogin from "./admin-login"; // import the login page
+
 export default function MemberLogin() {
   const router = useRouter();
   const [members, setMembers] = useState([]);
   const [oneMember, setOneMember] = useState({});
+  const {login } = useAdmin(); // get the login state from the context
+
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
 
@@ -50,6 +55,13 @@ export default function MemberLogin() {
       }
     }
   };
+
+
+  if(!login){ // if the user is not logged in, show the login page
+    return (
+      <AdminLogin/>
+    )
+  }
 
   return (
     <Layout>

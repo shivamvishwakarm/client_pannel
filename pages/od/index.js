@@ -5,16 +5,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 export default function Home() {
-  // const { data: session } = useSession(); // Assuming useSession provides the session data
   const router = useRouter();
   const userRole = "od";
 
-  // if (!session) {
-  //   // User is not authenticated, redirect to OD login page
-  //   console.log("User is not authenticated, redirect to OD login page")
-  //   // router.push('/od/LoginForm');
-  //   return null; // Render nothing while redirecting
-  // }
   return (
     <Layout userRole={userRole}>
       <div className="text-blue-900 flex justify-between">

@@ -17,7 +17,7 @@ export function AdminProvider({ children }) {
 
 
   return (
-    <AdminContext.Provider value={{ admin, setAdmin, setLogin }}>
+    <AdminContext.Provider value={{ admin, setAdmin, login, setLogin }}>
       {children}
     </AdminContext.Provider>
   );

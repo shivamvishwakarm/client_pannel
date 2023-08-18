@@ -2,20 +2,22 @@ import React from 'react'
 import { useState } from 'react';
 import Logo from '@/components/Logo';
 import Layout from '@/components/Layout';
-import { useAuth } from '../../context/AuthContext';
 import { router } from 'next/router';
 import Image from 'next/image';
+import { useAuth } from '@/context/AuthContext';
+import Od_login from './od-login';
 
 export const Dashboard = () => {
 
   const [showNav, setShowNav] = useState(false);
-  //   const { data: session } = useSession();
-  const { user, setLogin } = useAuth();
+
+  const { user, login, setLogin } = useAuth();
   const od_user = {...user};
   console.log('od_user:', od_user.role);
 
-  // if(!login) return router.push('/od/dashboard'); // redirect to dashboard
-
+  if(!login) {
+    return <Od_login />
+  }
 
   return (
     <Layout>

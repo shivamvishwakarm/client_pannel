@@ -1,10 +1,14 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useAdmin } from "@/context/AdminContext";
+import AdminLogin from "./admin-login";
 
 export default function OdLogin() {
 
   const [ods, setOds] = useState([]);
+  const {login } = useAdmin(); // get the login state from the context
+
 
   useEffect(() => {
     try {
@@ -42,6 +46,11 @@ export default function OdLogin() {
     }
   };
 
+  if(!login){ // if the user is not logged in, show the login page
+    return (
+      <AdminLogin/>
+    )
+  }
 
 
   return (

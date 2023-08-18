@@ -2,7 +2,7 @@ import React from 'react'
 import { router } from 'next/router';
 import { useState } from 'react';
 import { LoginForm } from '@/components/login';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 
 export const Od_login = () => {

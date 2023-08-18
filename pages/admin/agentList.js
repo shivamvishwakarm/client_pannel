@@ -1,12 +1,14 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Link from "next/link"
 import agent from "./products/agent";
+import { useAdmin } from "@/context/AdminContext";
+import AdminLogin from "./admin-login";
 
 export default function AgentList() {
 
   const [agents, setAgents] = useState([]);
+  const {login } = useAdmin(); // get the login state from the context
 
   useEffect(() => {
     try {
@@ -43,6 +45,14 @@ export default function AgentList() {
       }
     }
   };
+
+
+
+  if(!login){ // if the user is not logged in, show the login page
+    return (
+      <AdminLogin/>
+    )
+  }
 
 
   return (

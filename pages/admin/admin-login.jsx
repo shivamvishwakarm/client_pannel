@@ -7,8 +7,7 @@ import { useAdmin } from '@/context/AdminContext';
 
 export const AdminLogin = () => {
  
-  // const { setUser, setLogin} = useAuth(); // setting user info and login status in authContext (context api)
-  const {setAdmin} = useAdmin(); // setting user info and login status in authContext (context api) } 
+  const {setAdmin, login, setLogin} = useAdmin(); // setting user info and login status in authContext (context api) } 
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +28,7 @@ export const AdminLogin = () => {
       setPassword('');
     } else {
       setAdmin("admin");
+      setLogin(true);
       router.push('/admin'); // redirect to dashboard
       // You can add your logic for setting user info and login status here
     }

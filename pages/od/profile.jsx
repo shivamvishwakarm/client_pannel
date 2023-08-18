@@ -1,15 +1,19 @@
 import React from 'react'
 import { useState } from 'react';
 import Layout from '@/components/Layout';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import Image from 'next/image';
-
+import Od_login from './od-login';
 
 export const Profile = () => {
   const [showNav, setShowNav] = useState(false);
   const { user, login, logout } = useAuth();
   const od_user = {...user};
   console.log('od_user_in_profile:', od_user);
+
+  if(!login) return (
+    <Od_login />
+  )
 
   return (
     <Layout>
