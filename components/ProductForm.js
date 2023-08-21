@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 
 
 export default function ProductForm() {
-  const [goToProducts, setGoToProducts] = useState(false);
   const router = useRouter();
 
 
   // saving form to database
 
   const [formData, setFormData] = useState({
+    role: 'member',
     omt_id: '',
     password: '',
     email_id: '',
@@ -31,6 +31,7 @@ export default function ProductForm() {
     r_pincode: '',
     o_village: '',
     o_block: '',
+    type_of_organization: '',
     o_city: '',
     o_district: '',
     o_state: '',
@@ -63,6 +64,18 @@ export default function ProductForm() {
       // Handle errors here
     }
   };
+
+
+  const handleImage1Change = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, image1: file });
+  };
+
+  const handleImage2Change = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, image2: file });
+  };
+
 
 
   return (
@@ -241,6 +254,8 @@ export default function ProductForm() {
               Type of Organization
             </label>
             <input
+            value={formData.type_of_organization}
+            onChange={(e) => {setFormData({...formData,type_of_organization: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Type of Organization"
@@ -480,9 +495,9 @@ export default function ProductForm() {
               Picture (Upload)
             </label>
             <input
-            value={formData.image1}
-            onChange={(e) => {setFormData({...formData,image1: e.target.value})}}
-             type="file" className="mt-1 block w-full" />
+           
+           onChange={handleImage1Change}
+           type="file" className="mt-1 block w-full" />
           </div>
 
           <div className="mt-4">
@@ -490,9 +505,9 @@ export default function ProductForm() {
               Picture (Upload two)
             </label>
             <input
-            value={formData.image2}
-            onChange={(e) => {setFormData({...formData,image2: e.target.value})}}
-             type="file" className="mt-1 block w-full" />
+           
+            onChange={handleImage2Change}
+            type="file" className="mt-1 block w-full" />
           </div>
 
           <div className="mt-6">

@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import { useAdmin } from "@/context/AdminContext";
-import AdminLogin from "./admin-login";
+import AdminLogin from "./admin-login"
 
 
 export default function Home() {

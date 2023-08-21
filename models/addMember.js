@@ -1,6 +1,10 @@
 import {Schema, model, models} from "mongoose";
 
 const AddMemeber = new Schema({
+  role: {
+    type: String,
+    require: true,
+  },
   omt_id: {
     type: String,
     required: true,
