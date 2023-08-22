@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function ProductForm() {
+export default function OdForm() {
   // saving form to database
   const router = useRouter();
 
@@ -24,6 +24,7 @@ export default function ProductForm() {
     gender: '',
     physically_handicapped: '',
     name_of_enterprise: '',
+    type_of_org: '',
     r_village: '',
     r_block: '',
     r_city: '',
@@ -38,15 +39,28 @@ export default function ProductForm() {
     o_pincode: '',
     relationship_nominee: '',
     nominee_name: '',
-    image1: '',
-    image2: ''
+    image1: "",
+    image2: ""
   });
 
-  console.log(odData)
+
+  const handleImageChange = (event, imageField) => {
+    const file = event.target.files[0];
+    setOdData((prevData) => ({
+      ...prevData,
+      [imageField]: file,
+    }));
+  };
+  // console.log(odData)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("calling handle submit")
+
+    const formData = new FormData();
+    Object.keys(odData).forEach((key) => {
+      formData.append(key, odData[key]);
+    });    
+    // console.log("calling handle submit")
 
     try {
       const response = await fetch('/api/od/new/route', {
@@ -54,12 +68,12 @@ export default function ProductForm() {
           headers: {
               'Content-Type': 'application/json',
           },
-          body: JSON.stringify(odData),
+          body: formData,
       });
 
       const data = await response.json();
       console.log(data);
-      router.push("/admin/odLogin");
+      // router.push("/admin/odLogin");
     } catch (error) {
       console.error(error);
       // Handle errors here
@@ -492,9 +506,11 @@ Customer ID
               Picture (Upload)
             </label>
             <input 
-            value={odData.image1}
-            onChange={(e) => {setOdData({...odData,image1: e.target.value})}}
-            type="file" className="mt-1 block w-full" />
+            type="file" 
+            className="mt-1 block w-full" 
+            onChange={(e) => handleImageChange(e, "image1")}
+
+            />
           </div>
 
           <div className="mt-4">
@@ -502,9 +518,10 @@ Customer ID
               Picture (Upload two)
             </label>
             <input
-            value={odData.image2}
-            onChange={(e) => {setOdData({...odData,image2: e.target.value})}}
-            type="file" className="mt-1 block w-full" />
+            type="file" 
+            className="mt-1 block w-full" 
+            onChange={(e) => handleImageChange(e, "image2")}            
+            />
           </div>
 
           <div className="mt-6">

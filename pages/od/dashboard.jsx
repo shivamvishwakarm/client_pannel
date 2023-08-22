@@ -25,7 +25,7 @@ export const Dashboard = () => {
       <div className="container flex">
         <div className=" p-8">
           {/* User Image */}
-          <Image src={"/photo.jpg"} alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
+          <Image src={"/photo.png"} alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
           {/* <img src="/photo.jpg" alt="User" className="w-48 h-48 rectangle-full border-2	border-black	" /> */}
         </div>
         <div className="w-[50rem] p-8">
