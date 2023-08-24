@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function OdForm() {
   // saving form to database
   const router = useRouter();
 
+
+  // changes needed in image
   const [odData, setOdData] = useState({
     role:'od',
     customer_id: '',
@@ -22,7 +25,7 @@ export default function OdForm() {
     date_of_birth: '',
     social_category_entrepreneur: '',
     gender: '',
-    physically_handicapped: '',
+    physically_handicapped: 'No',
     name_of_enterprise: '',
     type_of_org: '',
     r_village: '',
@@ -39,40 +42,43 @@ export default function OdForm() {
     o_pincode: '',
     relationship_nominee: '',
     nominee_name: '',
-    image1: "",
-    image2: ""
+    image1: "/photo.jpg", // change to dynamic image
   });
 
 
-  const handleImageChange = (event, imageField) => {
-    const file = event.target.files[0];
-    setOdData((prevData) => ({
-      ...prevData,
-      [imageField]: file,
-    }));
-  };
-  // console.log(odData)
+  // const handleImageChange = (e) => {
+    
+    
+  // };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log("odData:", odData);
+    console.log("image1: ", odData.image1);
 
+    // working on dynamic image store in database
     const formData = new FormData();
     Object.keys(odData).forEach((key) => {
       formData.append(key, odData[key]);
-    });    
-    // console.log("calling handle submit")
+    }); 
+    
+    
+
+    // console.log("formData:", formData.get("image1"));
+
+    // formData.forEach((value, key) => {
+    //   console.log(key,": ", value);
+    // });
 
     try {
-      const response = await fetch('/api/od/new/route', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: formData,
+      const response = await axios.post("/api/member/new/route", formData,
+      {
+        headers: {"Content-Type": "multipart/form-data"},
       });
 
-      const data = await response.json();
-      console.log(data);
+      // const data = await response.json();
+      console.log(response);
       // router.push("/admin/odLogin");
     } catch (error) {
       console.error(error);
@@ -246,7 +252,7 @@ Customer ID
             <input
             value={odData.date_of_birth}
             onChange={(e) => {setOdData({...odData, date_of_birth: e.target.value})}}
-              type="date"
+              type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="YY-MM-DD"
             />
@@ -503,26 +509,30 @@ Customer ID
          
           <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
-              Picture (Upload)
+              Upload Picture
             </label>
             <input 
             type="file" 
             className="mt-1 block w-full" 
-            onChange={(e) => handleImageChange(e, "image1")}
+            // onChange={handleImageChange}
+            onChange={(e) => setOdData({...odData, image1: e.target.files[0]})}
 
             />
           </div>
 
-          <div className="mt-4">
+        {/* uncomment it to add second image option and also do change it schema and useState */}
+
+          {/* <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload two)
             </label>
             <input
             type="file" 
             className="mt-1 block w-full" 
-            onChange={(e) => handleImageChange(e, "image2")}            
+            // onChange={(e) => handleImageChange(e, "image2")}            
+            // onChange={(e) => setOdData({...odData, image2: e.target.files[0]}) }          
             />
-          </div>
+          </div> */}
 
           <div className="mt-6">
             <button

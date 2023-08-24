@@ -35,6 +35,10 @@ const AddMemeber = new Schema({
     type: String,
     required: true,
   },
+  type_of_org: {
+    type: String,
+    required: true,
+  },
   father_name: {
     type: String,
     required: true,

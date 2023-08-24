@@ -20,7 +20,7 @@ export const Profile = () => {
       <div className="container flex">
         <div className=" p-8">
           {/* User Image */}
-          <Image src="/photo.png" alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
+          <Image src={`/uploads/${od_user.image1}`} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
           {/* <img src="/photo.jpg" alt="User" className="w-40 h-50 rectangle-full border-2	border-black	" /> */}
         </div>
 
