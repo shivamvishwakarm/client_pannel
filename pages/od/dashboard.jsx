@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useAuth } from '@/context/AuthContext';
 import Od_login from './od-login';
 
+
 export const Dashboard = () => {
 
   const [showNav, setShowNav] = useState(false);
@@ -22,14 +23,23 @@ export const Dashboard = () => {
 
   return (
     <Layout>
+      <Image src="/csp.jpg" 
+      alt="A picture of white cats"
+      width={600}
+      height={600}
+      className="w-full rounded"
+      quality={100}
+     />
       <div className="container flex">
+        
         <div className=" p-8">
           {/* User Image */}
-          <Image src={"/photo.png"} alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
+          <Image src={`/uploads/${od_user.image1}`} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
           {/* <img src="/photo.jpg" alt="User" className="w-48 h-48 rectangle-full border-2	border-black	" /> */}
         </div>
         <div className="w-[50rem] p-8">
           {/* Account Statement */}
+          
           <p className="text-xl font-semibold mb-4 bg-green-300	px-2">ECSC GOVT. - My Account</p>
           <div className="space-y-4">
             {/* {accountData.map((entry, index) => ( key={index}  */}
@@ -57,7 +67,7 @@ export const Dashboard = () => {
               </div>
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Date of Birth: </h4>
-                <p className='px-2'>{od_user.date_of_birth}</p>
+                <p className='px-2'> {od_user.date_of_birth}</p>
               </div>
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Gender: </h4>

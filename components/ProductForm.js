@@ -21,7 +21,7 @@ export default function ProductForm() {
     date_of_birth: '',
     social_category_entrepreneur: '',
     gender: '',
-    physically_handicapped: '',
+    physically_handicapped: 'no',
     name_of_enterprise: '',
     r_village: '',
     r_block: '',
@@ -31,7 +31,7 @@ export default function ProductForm() {
     r_pincode: '',
     o_village: '',
     o_block: '',
-    type_of_organization: '',
+    type_of_org: '',
     o_city: '',
     o_district: '',
     o_state: '',
@@ -47,13 +47,13 @@ export default function ProductForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    //  console.log(formData)
+     console.log("product form ", formData)
       const response = await fetch('/api/member/new/route', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), // we should change this too
       });
 
       const data = await response.json();
@@ -65,15 +65,16 @@ export default function ProductForm() {
     }
   };
 
-
+// to work these function go to upload image section
   const handleImage1Change = (e) => {
     const file = e.target.files[0];
-    setFormData({ ...formData, image1: file });
+    console.log(file);
+    setFormData({ ...formData, image1: file.name });
   };
 
   const handleImage2Change = (e) => {
     const file = e.target.files[0];
-    setFormData({ ...formData, image2: file });
+    setFormData({ ...formData, image2: file.name });
   };
 
 
@@ -193,7 +194,7 @@ export default function ProductForm() {
             <input
             value={formData.date_of_birth}
             onChange={(e) => {setFormData({...formData,date_of_birth: e.target.value})}}
-              type="date"
+              type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="YY-MM-DD"
             />
@@ -254,8 +255,8 @@ export default function ProductForm() {
               Type of Organization
             </label>
             <input
-            value={formData.type_of_organization}
-            onChange={(e) => {setFormData({...formData,type_of_organization: e.target.value})}}
+            value={formData.type_of_org}
+            onChange={(e) => {setFormData({...formData,type_of_org: e.target.value})}}
               type="text"
               className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
               placeholder="Type of Organization"
@@ -488,9 +489,29 @@ export default function ProductForm() {
 
 
 
-         
+         {/* work in process */}
 
           <div className="mt-4">
+            <label className="text-sm font-medium text-gray-700">
+              Picture (Upload)
+            </label>
+            <input
+           // is not the proper way
+           onChange={(e) => {setFormData({...formData,image1: e.target.value})}}
+           type="file" className="mt-1 block w-full" />
+          </div>
+
+          <div className="mt-4">
+            <label className="text-sm font-medium text-gray-700">
+              Picture (Upload two)
+            </label>
+            <input
+           // is not the proper way
+
+            onChange={(e) => {setFormData({...formData,image2: e.target.value})}}
+            type="file" className="mt-1 block w-full" />
+          </div>
+          {/* <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload)
             </label>
@@ -508,7 +529,7 @@ export default function ProductForm() {
            
             onChange={handleImage2Change}
             type="file" className="mt-1 block w-full" />
-          </div>
+          </div> */}
 
           <div className="mt-6">
             <button

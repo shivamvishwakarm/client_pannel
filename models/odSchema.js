@@ -58,7 +58,7 @@ const OD = new Schema({
       required: true,
     },
     date_of_birth: {
-      type: Date,
+      type: String,
       required: true,
     },
     social_category_entrepreneur: {
@@ -142,11 +142,12 @@ const OD = new Schema({
       type: String,
       required: true,
     },
-  
-    image2: {
-      type: String,
-      required: true,
-    },
+    
+    // uncomment this if you want to add more images and also do uncomment the image2 in the odForm.js file
+    // image2: {
+    //   type: String,
+    //   required: true,
+    // },
   });
   
   // const odMember = model("odMember", OD);

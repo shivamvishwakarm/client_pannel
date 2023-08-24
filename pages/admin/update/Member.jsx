@@ -1,6 +1,6 @@
 import React from 'react'
-import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useAdmin } from '@/context/AdminContext';
 import Layout from '@/components/Layout';
 
@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 export const Member = () => {
   const { admin, login, editMember, setEditMember } = useAdmin();
 
-  console.log('editMember', editMember);
+  console.log('editMember: ', editMember.type_of_org);
   const router = useRouter();
 
 
@@ -29,7 +29,7 @@ export const Member = () => {
     gender: editMember.gender,
     physically_handicapped: editMember.physically_handicapped,
     name_of_enterprise: editMember.name_of_enterprise,
-    type_of_organisation: editMember.type_of_organisation,
+    type_of_org: editMember.type_of_org,
     r_village: editMember.r_village,
     r_block: editMember.r_block,
     r_city: editMember.r_city,
@@ -52,7 +52,12 @@ export const Member = () => {
   });
   
   const handleSubmit = async (e) => {
+
     e.preventDefault();
+
+    console.log('formData', formData);
+
+
     try {
 
       const response = await fetch(`/api/updateMember/route`, {
@@ -206,7 +211,7 @@ export const Member = () => {
               <input
                 value={formData?.date_of_birth || editMember.date_of_birth}
                 onChange={(e) => { setFormData({ ...formData, date_of_birth: e.target.value }) }}
-                type="date"
+                type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="YY-MM-DD"
               />
@@ -267,8 +272,8 @@ export const Member = () => {
                 Type of Organization
               </label>
               <input
-                value={formData?.type_of_organization || editMember.type_of_organization}
-                onChange={(e) => { setFormData({ ...formData, type_of_organization: e.target.value }) }}
+                value={formData?.type_of_org || editMember.type_of_org}
+                onChange={(e) => { setFormData({ ...formData, type_of_org: e.target.value }) }}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="Type of Organization"

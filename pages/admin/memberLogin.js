@@ -17,7 +17,7 @@ export default function MemberLogin() {
 
   const handleUpdateClick = (member) => {
     // router.push(`/update-member?id=${member._id}`);
-    console.log(member);
+    console.log("update button click on member login: " ,member);
     setEditMember(member);
     router.push(`/admin/update/Member`);
   };

@@ -255,7 +255,7 @@ export function OdUpdate() {
               <input
                 value={odData?.date_of_birth || editOd.date_of_birth}
                 onChange={(e) => { setOdData({ ...odData, date_of_birth: e.target.value }) }}
-                type="date"
+                type="type"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                 placeholder="YY-MM-DD"
               />
@@ -451,7 +451,7 @@ export function OdUpdate() {
                 onChange={(e) => { setOdData({ ...odData, o_district: e.target.value }) }}
                 type="text"
                 className="mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
-                placeholder="District"
+                placeholder="Distraict"
               />
             </div>
 
@@ -521,7 +521,9 @@ export function OdUpdate() {
               />
             </div>
 
-            <div className="mt-4">
+            {/* uncomment if you want to add more upload input */}
+            
+            {/* <div className="mt-4">
               <label className="text-sm font-medium text-gray-700">
                 Picture (Upload two)
               </label>
@@ -530,7 +532,7 @@ export function OdUpdate() {
                 type="file" className="mt-1 block w-full"
                 onChange={handleImage2Change}
               />
-            </div>
+            </div> */}
 
             <div className="mt-6">
               <button
