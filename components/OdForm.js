@@ -42,26 +42,21 @@ export default function OdForm() {
     o_pincode: '',
     relationship_nominee: '',
     nominee_name: '',
-    image1: "/photo.jpg", // change to dynamic image
+    image1: "", 
+    image2: "",
   });
 
-
-  // const handleImageChange = (e) => {
-    
-    
-  // };
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log("odData:", odData);
-    console.log("image1: ", odData.image1);
 
     // working on dynamic image store in database
     const formData = new FormData();
     Object.keys(odData).forEach((key) => {
       formData.append(key, odData[key]);
-    }); 
+    });
     
     
 
@@ -72,14 +67,14 @@ export default function OdForm() {
     // });
 
     try {
-      const response = await axios.post("/api/member/new/route", formData,
+      const response = await axios.post("/api/od/new/route", formData,
       {
         headers: {"Content-Type": "multipart/form-data"},
       });
 
       // const data = await response.json();
-      console.log(response);
-      // router.push("/admin/odLogin");
+      // console.log(response);
+      router.push("/admin/odLogin");
     } catch (error) {
       console.error(error);
       // Handle errors here
@@ -522,7 +517,7 @@ Customer ID
 
         {/* uncomment it to add second image option and also do change it schema and useState */}
 
-          {/* <div className="mt-4">
+          <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload two)
             </label>
@@ -530,9 +525,9 @@ Customer ID
             type="file" 
             className="mt-1 block w-full" 
             // onChange={(e) => handleImageChange(e, "image2")}            
-            // onChange={(e) => setOdData({...odData, image2: e.target.files[0]}) }          
+            onChange={(e) => setOdData({...odData, image2: e.target.files[0]}) }          
             />
-          </div> */}
+          </div>
 
           <div className="mt-6">
             <button

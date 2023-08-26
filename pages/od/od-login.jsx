@@ -36,7 +36,9 @@ export const Od_login = () => {
 
       } else {
         const data = await response.json();
+        alert('Please check your username and password');
         console.log('Login error:', data.message);
+       
       }
     } catch (error) {
       console.error('Login error:', error);

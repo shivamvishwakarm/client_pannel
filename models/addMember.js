@@ -44,7 +44,7 @@ const AddMemeber = new Schema({
     required: true,
   },
   date_of_birth: {
-    type: Date,
+    type: String,
     required: true,
   },
   social_category_entrepreneur: {

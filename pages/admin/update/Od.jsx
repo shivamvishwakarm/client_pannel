@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import { useAdmin } from "@/context/AdminContext";
+import Image from "next/image";
 
 export function OdUpdate() {
   // saving form to database
   const router = useRouter();
   const { admin, setAdmin, editOd, setEditOd } = useAdmin();
 
-  console.log("od:", editOd);
+  // console.log("od:", editOd);
   const [odData, setOdData] = useState({
     _id: editOd._id,
     customer_id: editOd.customer_id,
@@ -46,6 +47,8 @@ export function OdUpdate() {
     image2: editOd.image2,
   });
 
+// console.log("image2: ", editOd.image2);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +65,7 @@ export function OdUpdate() {
       if(response.ok) {
     
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       router.push("/admin/odLogin");
 
       } else {
@@ -509,23 +512,33 @@ export function OdUpdate() {
               />
             </div>
 
+            {/*  Profile Image */}
 
-            <div className="mt-4">
+            <div >
+            <Image src={`/uploads/${editOd?.image1}`} unoptimized={true} alt="Picture" width={48} height={48}  className="w-48 h-48 rectangle-full my-4 border-2	border-black	" />
+              Image1 (Profile Image)
+            </div>
+            {/* <div className="mt-4">
               <label className="text-sm font-medium text-gray-700">
-                Picture (Upload)
+                Picture (Profile)
               </label>
               <input
                 
                 type="file" className="mt-1 block w-full"
                 onChange={handleImage1Change}
               />
-            </div>
+            </div> */}
 
             {/* uncomment if you want to add more upload input */}
-            
+
+            {/* Bank Logo Image */}
+            <div >
+            <Image src={`/uploads/${editOd?.image2}`} unoptimized={true} alt="Logo" width={48} height={48}  className="w-48 h-48 rectangle-full border-2 my-4	border-black	" />
+            </div>
+            Image2 (Logo Image)
             {/* <div className="mt-4">
               <label className="text-sm font-medium text-gray-700">
-                Picture (Upload two)
+                Picture (Logo)
               </label>
               <input
                
