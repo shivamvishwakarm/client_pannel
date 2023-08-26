@@ -17,6 +17,14 @@ export const Profile = () => {
 
   return (
     <Layout>
+      <Image src="/csp.jpg" 
+      alt="A picture of white cats"
+      width={600}
+      height={600}
+      className="w-full rounded my-4"
+      quality={100}
+      unoptimized={true}
+     />
       <div className="container flex">
         <div className=" p-8">
           {/* User Image */}

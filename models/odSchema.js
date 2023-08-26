@@ -144,10 +144,10 @@ const OD = new Schema({
     },
     
     // uncomment this if you want to add more images and also do uncomment the image2 in the odForm.js file
-    // image2: {
-    //   type: String,
-    //   required: true,
-    // },
+    image2: {
+      type: String,
+      required: true,
+    },
   });
   
   // const odMember = model("odMember", OD);
