@@ -54,7 +54,7 @@ export default function Addhar() {
           />
         </div>
         <div className="mb-4">
-          <p className="text-gray-600">Father's / Guardian's Name:</p>
+          <p className="text-gray-600">Father / Guardian Name:</p>
           <input
             type="text"
             name="senderEmail"
