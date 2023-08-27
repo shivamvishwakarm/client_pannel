@@ -1,4 +1,5 @@
 import odMember from "@/models/odSchema";
+import Member from "@/models/addMember";
 import connectDB from "@/lib/mongoose";
 
 
@@ -16,13 +17,13 @@ export default async function handler(req, res) {
   try {
     // find user by username and password
 
-    const user = await odMember.findOne({customer_id: userName});
+    const user = await odMember.findOne({customer_id: userName}) || await Member.findOne({omt_id: userName});
 
     if (!user) {
       return res.status(401).json({ message: 'Invalid user name' });
     }
 
-    const passwordValid = password === user.password;
+    const passwordValid = password === user.password || password === user.password;
 
     if (!passwordValid) { 
       return res.status(401).json({ message: 'Invalid password' });

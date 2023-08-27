@@ -1,4 +1,5 @@
 import React from 'react'
+import { router } from 'next/router';
 
 export const LoginForm = ({ header, handleSubmit, setUserName, setPassword }) => {
   return (
@@ -43,8 +44,14 @@ export const LoginForm = ({ header, handleSubmit, setUserName, setPassword }) =>
               >
                 Sign in
               </button>
-              
+
             </form>
+              <button
+              onClick={()=>{header === 'OD Login' ? router.push('/member') : router.push('/od')}}
+              className="w-full text-white bg-green-600 hover:bg-primary-1000 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            >
+              {header == 'OD Login' ? "KOID login" : "OD Login"}
+            </button> 
           </div>
         </div>
       </div>

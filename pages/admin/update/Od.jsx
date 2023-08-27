@@ -65,8 +65,8 @@ export function OdUpdate() {
       if(response.ok) {
     
       const data = await response.json();
-      // console.log(data);
-      router.push("/admin/odLogin");
+      console.log(data);
+      // router.push("/admin/odLogin");
 
       } else {
         console.error("Failed to update od", response.statusText);

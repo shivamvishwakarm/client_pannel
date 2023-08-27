@@ -3,6 +3,7 @@ import odMember from "@/models/odSchema"; // Import your Mongoose model
 import formidable from "formidable";
 import path from "path";
 import fs from "fs";
+import {v2 as cloudinary} from 'cloudinary';
 
 connectDB(); // Connect to the database
 
@@ -11,6 +12,18 @@ export const config = {
     bodyParser: false,
   },
 };
+// cloudinary configuration
+
+cloudinary.config({ 
+  cloud_name: 'dkvlnbssg', 
+  api_key: '379593588422256', 
+  api_secret: 'RchtZABOM4VHg75gd1lfB_UXhN8' 
+});
+
+
+
+
+
 const parseForm = (req, saveLocally) => {
   const options = {};
   if (saveLocally) {
@@ -35,6 +48,18 @@ const handler = async (req, res) => {
     const uploadFolderPath = path.join(process.cwd(), '/public/uploads');
     await fs.mkdir(uploadFolderPath, { recursive: true });
    const {fields, files} =  await parseForm(req, true);
+
+    // uploading images to cloudinary
+    console.log("image1", files.image1[0].filepath);
+
+  cloudinary.v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
+    { public_id: "olympic_flag" }, 
+    function(error, result) {console.log(result); });
+
+
+    // const image2UploadResult = await cloudinary.uploader.upload(files.image2[0].path);
+
+
 
   //  console.log("image2", files.image2[0].newFilename);
   //  console.log("files: ", files);
