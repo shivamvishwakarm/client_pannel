@@ -73,8 +73,8 @@ export default function OdForm() {
       });
 
       // const data = await response.json();
-      // console.log(response);
-      router.push("/admin/odLogin");
+      console.log(response);
+      // router.push("/admin/odLogin");
     } catch (error) {
       console.error(error);
       // Handle errors here
