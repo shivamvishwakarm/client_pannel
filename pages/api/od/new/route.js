@@ -114,7 +114,11 @@ dotenv.config();
 // Set up Multer and Cloudinary configurations
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-const uploadMiddleware = upload.array("image1", 2); // Upload an array of files (limit to 2)
+const uploadMiddleware = upload.fields([
+  { name: "image1", maxCount: 1 },
+  { name: "image2", maxCount: 1 },
+]);
+
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -141,8 +145,14 @@ export default async function handler(req, res) {
     // Run the Multer middleware for multiple files
     await runMiddleware(req, res, uploadMiddleware);
 
+    const image1File = req.files["image1"][0];
+     const image2File = req.files["image2"][0];
+
+     console.log("image1", image1File);
+     console.log("image2", image2File);
+
     // Upload each file to Cloudinary using a stream
-    const uploadPromises = req.files.map(async (file) => {
+    const uploadPromises = [image1File, image2File].map(async (file) => {
       return new Promise((resolve) => {
         const stream = cloudinary.uploader.upload_stream(
           {
@@ -162,6 +172,8 @@ export default async function handler(req, res) {
 
     // Wait for all uploads to complete
     const uploadResults = await Promise.all(uploadPromises);
+
+    console.log("uploadResults", uploadResults);
 
     // Save data to MongoDB
     const newEntry = new odMember({
@@ -207,7 +219,7 @@ export default async function handler(req, res) {
       nominee_name: req.body.nominee_name,
 
       image1: uploadResults[0].secure_url, // Assuming image1 is uploaded first
-      // image2: uploadResults[1].secure_url, // Assuming image2 is uploaded second
+      image2: uploadResults[1].secure_url, // Assuming image2 is uploaded second
     });
 
     await newEntry.save();

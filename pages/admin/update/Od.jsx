@@ -47,7 +47,7 @@ export function OdUpdate() {
     image2: editOd.image2,
   });
 
-// console.log("image2: ", editOd.image2);
+console.log("image2: ", editOd.image2);
 
 
   const handleSubmit = async (e) => {
@@ -534,10 +534,10 @@ export function OdUpdate() {
             {/* Bank Logo Image */}
 
 
-            {/* <div >
-            <Image src={`/uploads/${editOd?.image2}`} unoptimized={true} alt="Logo" width={48} height={48}  className="w-48 h-48 rectangle-full border-2 my-4	border-black	" />
+            <div >
+            <Image src={editOd?.image2} unoptimized={true} alt="Logo" width={48} height={48}  className="w-48 h-48 rectangle-full border-2 my-4	border-black	" />
             </div>
-            Image2 (Logo Image) */}
+            Image2 (Logo Image)
 
 
             {/* <div className="mt-4">

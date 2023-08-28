@@ -44,7 +44,7 @@ export default function OdForm() {
     relationship_nominee: '',
     nominee_name: '',
     image1: "", 
-    // image2: "", //commented for multer
+    image2: "", //commented for multer
   });
 
 
@@ -519,7 +519,7 @@ Customer ID
 
         {/* uncomment it to add second image option and also do change it schema and useState */}
 
-          {/* <div className="mt-4">
+          <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload two)
             </label>
@@ -530,7 +530,7 @@ Customer ID
             // onChange={(e) => handleImageChange(e, "image2")}            
             onChange={(e) => setOdData({...odData, image2: e.target.files[0]}) }          
             />
-          </div> */}
+          </div>
 
           <div className="mt-6">
             <button

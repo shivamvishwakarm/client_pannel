@@ -520,11 +520,11 @@ export const Member = () => {
                 onChange={handleImage1Change}
                 type="file" className="mt-1 block w-full" />
             </div> */}
-{/* 
+
                  <div >
             <Image src={editMember?.image2} unoptimized={true} alt="Logo" width={48} height={48}  className="w-48 h-48 rectangle-full border-2 my-4	border-black	" />
             </div>
-            Image2 (Logo Image) */}
+            Image2 (Logo Image)
 {/* 
             <div className="mt-4">
               <label className="text-sm font-medium text-gray-700">

@@ -11,9 +11,6 @@ export default function Nav({ show, userRole }) {
   const router = useRouter();
   const { pathname } = router;
 
-  async function logout() {
-    await signOut();
-  }
 
   const renderLinks = () => {
     if (userRole === "admin") {
@@ -164,7 +161,11 @@ export default function Nav({ show, userRole }) {
               Agent list
             </Link>
 
-            <button onClick={logout} className={inactiveLink}>
+            <button onClick={() => { 
+                  signOut();
+                 router.push("/admin")
+                }} 
+                 className={inactiveLink}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -442,7 +443,11 @@ export default function Nav({ show, userRole }) {
               Support
             </Link>
 
-            <button onClick={logout} className={inactiveLink}>
+            <button onClick={() =>{
+                signOut();
+              router.push("/od")}
+            } 
+              className={inactiveLink}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -759,7 +764,7 @@ export default function Nav({ show, userRole }) {
     <aside
       className={
         (show ? "left-0" : "-left-full") +
-        " top-0 text-gray-500 p-4 fixed w-full bg-bgGray h-full md:static md:w-auto transition-all"
+        " top-0 text-gray-500 p-4 fixed w-full bg-slate-900	  md:static md:w-auto transition-all"
       }
     >
       {renderLinks()}
