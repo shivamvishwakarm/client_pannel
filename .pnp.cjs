@@ -39,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["busboy", "npm:1.6.0"],\
             ["cloudinary", "npm:1.40.0"],\
             ["date-fns", "npm:2.30.0"],\
+            ["dotenv", "npm:16.3.1"],\
             ["eslint", "npm:8.35.0"],\
             ["eslint-config-next", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:13.2.3"],\
             ["express", "npm:4.18.2"],\
@@ -60,6 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-spinners", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:0.13.8"],\
             ["react-sweetalert2", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:0.5.2"],\
             ["sortablejs", "npm:1.15.0"],\
+            ["streamifier", "npm:0.1.1"],\
             ["tailwindcss", "npm:3.3.3"],\
             ["typeorm", "npm:0.2.28"]\
           ],\
@@ -3148,6 +3150,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["dotenv", [\
+        ["npm:16.3.1", {\
+          "packageLocation": "./.yarn/cache/dotenv-npm-16.3.1-e6d380a398-15d75e7279.zip/node_modules/dotenv/",\
+          "packageDependencies": [\
+            ["dotenv", "npm:16.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:8.6.0", {\
           "packageLocation": "./.yarn/cache/dotenv-npm-8.6.0-2ce3e9f7bb-38e902c80b.zip/node_modules/dotenv/",\
           "packageDependencies": [\
@@ -3191,6 +3200,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["busboy", "npm:1.6.0"],\
             ["cloudinary", "npm:1.40.0"],\
             ["date-fns", "npm:2.30.0"],\
+            ["dotenv", "npm:16.3.1"],\
             ["eslint", "npm:8.35.0"],\
             ["eslint-config-next", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:13.2.3"],\
             ["express", "npm:4.18.2"],\
@@ -3212,6 +3222,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-spinners", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:0.13.8"],\
             ["react-sweetalert2", "virtual:7041dadab507daf213cb931f43212ea5fd9f18eb3bd5c280822fa3ce96b0c8e813edd196b84e95387bf300fe64210c14d368d36d64334875a7d4f6b2f4dadf5a#npm:0.5.2"],\
             ["sortablejs", "npm:1.15.0"],\
+            ["streamifier", "npm:0.1.1"],\
             ["tailwindcss", "npm:3.3.3"],\
             ["typeorm", "npm:0.2.28"]\
           ],\
@@ -7356,6 +7367,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/statuses-npm-2.0.1-81d2b97fee-18c7623fdb.zip/node_modules/statuses/",\
           "packageDependencies": [\
             ["statuses", "npm:2.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["streamifier", [\
+        ["npm:0.1.1", {\
+          "packageLocation": "./.yarn/cache/streamifier-npm-0.1.1-105e0d3dc6-67a8285c4d.zip/node_modules/streamifier/",\
+          "packageDependencies": [\
+            ["streamifier", "npm:0.1.1"]\
           ],\
           "linkType": "HARD"\
         }]\

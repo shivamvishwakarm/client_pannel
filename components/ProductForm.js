@@ -497,7 +497,7 @@ export default function ProductForm() {
 
         {/* uncomment it to add second image option and also do change it schema and useState */}
 
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload two)
             </label>
@@ -506,7 +506,7 @@ export default function ProductForm() {
             className="mt-1 block w-full" 
             onChange={(e) => setMemberData({...memberData, image2: e.target.files[0]}) }          
             />
-          </div>
+          </div> */}
          
 
           <div className="mt-6">

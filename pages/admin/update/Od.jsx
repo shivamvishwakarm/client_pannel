@@ -515,7 +515,7 @@ export function OdUpdate() {
             {/*  Profile Image */}
 
             <div >
-            <Image src={`/uploads/${editOd?.image1}`} unoptimized={true} alt="Picture" width={48} height={48}  className="w-48 h-48 rectangle-full my-4 border-2	border-black	" />
+            <Image src={editOd?.image1} unoptimized={true} alt="Picture" width={48} height={48}  className="w-48 h-48 rectangle-full my-4 border-2	border-black	" />
               Image1 (Profile Image)
             </div>
             {/* <div className="mt-4">
@@ -532,10 +532,14 @@ export function OdUpdate() {
             {/* uncomment if you want to add more upload input */}
 
             {/* Bank Logo Image */}
-            <div >
+
+
+            {/* <div >
             <Image src={`/uploads/${editOd?.image2}`} unoptimized={true} alt="Logo" width={48} height={48}  className="w-48 h-48 rectangle-full border-2 my-4	border-black	" />
             </div>
-            Image2 (Logo Image)
+            Image2 (Logo Image) */}
+
+
             {/* <div className="mt-4">
               <label className="text-sm font-medium text-gray-700">
                 Picture (Logo)

@@ -139,10 +139,10 @@ const AddMemeber = new Schema({
     required: true,
   },
 
-  image2: {
-    type: String,
-    required: true,
-  },
+  // image2: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 // const Member = model("Member", AddMemeber);

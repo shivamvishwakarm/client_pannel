@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -43,7 +44,7 @@ export default function OdForm() {
     relationship_nominee: '',
     nominee_name: '',
     image1: "", 
-    image2: "", // commented
+    // image2: "", //commented for multer
   });
 
 
@@ -73,8 +74,8 @@ export default function OdForm() {
       });
 
       // const data = await response.json();
-      console.log(response);
-      // router.push("/admin/odLogin");
+      // console.log(response);
+      router.push("/admin/odLogin");
     } catch (error) {
       console.error(error);
       // Handle errors here
@@ -507,6 +508,7 @@ Customer ID
               Upload Picture
             </label>
             <input 
+            name="files" // added later
             type="file" 
             className="mt-1 block w-full" 
             // onChange={handleImageChange}
@@ -517,17 +519,18 @@ Customer ID
 
         {/* uncomment it to add second image option and also do change it schema and useState */}
 
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
               Picture (Upload two)
             </label>
             <input
+            name="files" // added later
             type="file" 
             className="mt-1 block w-full" 
             // onChange={(e) => handleImageChange(e, "image2")}            
             onChange={(e) => setOdData({...odData, image2: e.target.files[0]}) }          
             />
-          </div>
+          </div> */}
 
           <div className="mt-6">
             <button
