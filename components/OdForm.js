@@ -43,7 +43,7 @@ export default function OdForm() {
     relationship_nominee: '',
     nominee_name: '',
     image1: "", 
-    image2: "",
+    image2: "", // commented
   });
 
 
