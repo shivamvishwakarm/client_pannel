@@ -2284,6 +2284,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cloudinary-core@npm:^2.13.0":
+  version: 2.13.0
+  resolution: "cloudinary-core@npm:2.13.0"
+  peerDependencies:
+    lodash: ">=4.0"
+  checksum: 5485fbc094b0722f6d4c6becfde431d3042c3c926a69c4bc2f6b373ac059b9b798703845c6cbf4a55ee2eb1c7718f5ec5130772117419755015b04dabd369be5
+  languageName: node
+  linkType: hard
+
+"cloudinary@npm:^1.40.0":
+  version: 1.40.0
+  resolution: "cloudinary@npm:1.40.0"
+  dependencies:
+    cloudinary-core: ^2.13.0
+    core-js: ^3.30.1
+    lodash: ^4.17.21
+    q: ^1.5.1
+  checksum: 722e1ce03a0f9450ba36f70b961642ce7bb7620c5fce69e243a812a6a59ef37e6c34a05c59c94a16c35ecebca6de7cea92e94297a9bdfa134587f6f02960e3f2
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^2.0.1":
   version: 2.0.1
   resolution: "color-convert@npm:2.0.1"
@@ -2378,6 +2399,13 @@ __metadata:
   version: 0.5.0
   resolution: "cookie@npm:0.5.0"
   checksum: 1f4bd2ca5765f8c9689a7e8954183f5332139eb72b6ff783d8947032ec1fdf43109852c178e21a953a30c0dd42257828185be01b49d1eb1a67fd054ca588a180
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.30.1":
+  version: 3.32.1
+  resolution: "core-js@npm:3.32.1"
+  checksum: e4af91d9c6be7b59235feb3f273d16705126ce09a0b4a787144d131d874f0cd10be3c24fc52e5eea7d7cb03ceabe4be7b255abcd9474b5eb1ff365d2c5611f9a
   languageName: node
   linkType: hard
 
@@ -2564,6 +2592,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.3.1":
+  version: 16.3.1
+  resolution: "dotenv@npm:16.3.1"
+  checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^8.2.0":
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
@@ -2599,7 +2634,9 @@ __metadata:
     autoprefixer: ^10.4.14
     axios: ^1.3.4
     busboy: ^1.6.0
+    cloudinary: ^1.40.0
     date-fns: ^2.30.0
+    dotenv: ^16.3.1
     eslint: 8.35.0
     eslint-config-next: 13.2.3
     express: ^4.18.2
@@ -2621,6 +2658,7 @@ __metadata:
     react-spinners: ^0.13.8
     react-sweetalert2: ^0.5.2
     sortablejs: ^1.15.0
+    streamifier: ^0.1.1
     tailwindcss: ^3.3.3
     typeorm: 0.2.28
   languageName: unknown
@@ -5455,6 +5493,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"q@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "q@npm:1.5.1"
+  checksum: 147baa93c805bc1200ed698bdf9c72e9e42c05f96d007e33a558b5fdfd63e5ea130e99313f28efc1783e90e6bdb4e48b67a36fcc026b7b09202437ae88a1fb12
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.11.0":
   version: 6.11.0
   resolution: "qs@npm:6.11.0"
@@ -6047,6 +6092,13 @@ __metadata:
   version: 1.5.0
   resolution: "statuses@npm:1.5.0"
   checksum: c469b9519de16a4bb19600205cffb39ee471a5f17b82589757ca7bd40a8d92ebb6ed9f98b5a540c5d302ccbc78f15dc03cc0280dd6e00df1335568a5d5758a5c
+  languageName: node
+  linkType: hard
+
+"streamifier@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "streamifier@npm:0.1.1"
+  checksum: 67a8285c4d71ae1fa0ed5e0966a0483d962f5140bab28ad04657f57de521ab4e9d929c2ec8c51a4393c838ce664db2e398de3ee9bd9da727a4f35bb85915ed2d
   languageName: node
   linkType: hard
 
