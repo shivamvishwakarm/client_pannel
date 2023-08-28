@@ -1,8 +1,8 @@
 import Layout from '@/components/Layout'
 import React from 'react'
 import { useState } from 'react';
+import Member_login from './member-login';
 import { useAuth } from '@/context/AuthContext';
-import Od_login from './od-login';
 
 export const Passport = () => {
   const [name, setName] = useState('');
@@ -10,13 +10,11 @@ export const Passport = () => {
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
   const [date, setDate] = useState('');
+  const {login, setLogin } = useAuth();
 
-    const {login, setLogin } = useAuth();
-
-    if (!login) {
-        return <Od_login />
-
-    }
+if (!login) {
+  return <Member_login />
+}
 
   const handleSubmit = (e) => {
       e.preventDefault();

@@ -1,10 +1,9 @@
 import Layout from '@/components/Layout'
 import React from 'react'
 import { useState } from 'react';
+import Member_login from './member-login';
 import { useAuth } from '@/context/AuthContext';
-import Od_login from './od-login';
-
-export const Transfer_money = () => {
+export const Withdrawal_money = () => {
 
     const [beneficiaryName, setBeneficiaryName] = useState('');
     const [beneficiaryAccountNo, setBeneficiaryAccountNo] = useState('');
@@ -12,21 +11,23 @@ export const Transfer_money = () => {
     const [selectedBank, setSelectedBank] = useState('');
     const [ifscCode, setIFSCCode] = useState('');
     const [amount, setAmount] = useState('');
-    const {login,setLogin} = useAuth(); // setting user info and login status in authContext (context api)
+    const {login, setLogin } = useAuth();
 
-    if(!login) return (<Od_login/>)
+    if (!login) {
+        return <Member_login />
+      }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission here
-        console.log({
-            beneficiaryName,
-            beneficiaryAccountNo,
-            confirmAccountNo,
-            selectedBank,
-            ifscCode,
-            amount,
-        });
+        // console.log({
+        //     beneficiaryName,
+        //     beneficiaryAccountNo,
+        //     confirmAccountNo,
+        //     selectedBank,
+        //     ifscCode,
+        //     amount,
+        // });
     };
 
     const bankOptions = [
@@ -52,7 +53,7 @@ export const Transfer_money = () => {
         <Layout>
             <div className="max-w-xl mx-auto p-4">
                 <div className='text-center	flex flex-col py-4'>
-                    <h1 className='bg-green-400 px-4 py-4'>Transfer Money</h1>
+                    <h1 className='bg-green-400 px-4 py-4'>Transfer Money 24*7</h1>
                     <p className='bg-violet-700 '>
                         NATIONAL ELECTRONIC FUNDS TRANSFER (NEFT)
                     </p>
@@ -161,4 +162,4 @@ export const Transfer_money = () => {
     )
 }
 
-export default Transfer_money;
+export default Withdrawal_money;

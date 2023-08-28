@@ -2,9 +2,18 @@ import React from "react";
 import Layout from "@/components/Layout";
 import { useState } from "react";
 import axios from 'axios';
+import Member_login from './member-login';
+import { useAuth } from '@/context/AuthContext';
+
+
 
 export default function Loan() {
+  const {login, setLogin } = useAuth();
 
+  
+  if (!login) {
+    return <Member_login />
+  }
 //   const [formData, setFormData] = useState({
 //     senderAddress: '',
 //     senderEmail: '',

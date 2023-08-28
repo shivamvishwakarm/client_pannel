@@ -8,8 +8,8 @@ const AdminContext = createContext();
 export function AdminProvider({ children }) {
   const [admin, setAdmin] = useState('');
   const [login, setLogin] = useState(false);
-  const [editMember, setEditMember] = useState({}); // this is the member);
   const [editOd, setEditOd] = useState({}); // this is the member);
+  const [editMember, setEditMember] = useState({}); // this is the member);
 
   useEffect(() => {  
     if (login) { 
@@ -19,7 +19,7 @@ export function AdminProvider({ children }) {
 
 
   return (
-    <AdminContext.Provider value={{ admin, setAdmin, login, setLogin, editMember, setEditMember, editOd, setEditOd }}>
+    <AdminContext.Provider value={{ admin, setAdmin, login, setLogin, editOd, setEditOd, editMember, setEditMember }}>
       {children}
     </AdminContext.Provider>
   );

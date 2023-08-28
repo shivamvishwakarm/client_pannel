@@ -9,10 +9,9 @@ import Image from 'next/image'
 export const Member = () => {
   const { admin, login, editMember, setEditMember } = useAdmin();
 
-  console.log('editMember: ', editMember.type_of_org);
   const router = useRouter();
 
-
+console.log('editMember', editMember)
   // saving form to database
 
   const [formData, setFormData] = useState({

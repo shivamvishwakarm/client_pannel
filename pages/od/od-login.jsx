@@ -7,7 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 
 export const Od_login = () => {
  
-  const { setUser, setLogin} = useAuth(); // setting user info and login status in authContext (context api)
+  const {setRole, setUser, setLogin} = useAuth(); // setting user info and login status in authContext (context api)
 
 
   const [userName, setUserName] = useState('');
@@ -30,6 +30,7 @@ export const Od_login = () => {
         const data = await response.json();
 
         setUser(data.user); // set user info
+        setRole(data.user.role)
         setLogin(true); // set login status
 
         router.push('/od/dashboard'); // redirect to dashboard

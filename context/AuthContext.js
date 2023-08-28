@@ -8,16 +8,18 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [login, setLogin] = useState(false);
+  const [role, setRole] = useState(null); // ['od', 'admin', 'member'
+  const [member, setMember] = useState(null);
 
   useEffect(() => {  
     if (login) { 
-      router.push('/od/dashboard');
+      router.push(`/${role}/dashboard`);
     }
   }, [login]);
 
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, setLogin }}>
+    <AuthContext.Provider value={{ user, setUser, login, setLogin , member, setMember, setRole}}>
       {children}
     </AuthContext.Provider>
   );

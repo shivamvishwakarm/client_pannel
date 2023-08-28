@@ -9,7 +9,7 @@ export const Profile = () => {
   const [showNav, setShowNav] = useState(false);
   const { user, login, logout } = useAuth();
   const od_user = {...user};
-  console.log('od_user_in_profile:', od_user);
+  // console.log('od_user_in_profile:', od_user);
 
   if(!login) return (
     <Od_login />

@@ -5,19 +5,23 @@ import { LoginForm } from '@/components/login';
 import { useAuth } from '@/context/AuthContext';
 
 
+
 export const Member_login = () => {
  
-  const { setUser, setLogin} = useAuth(); // setting user info and login status in authContext (context api)
+  const { setRole,login, setUser, setLogin} = useAuth(); // setting user info and login status in authContext (context api)
 
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
+// if (!login) {
+//   return <Member_login />
+// }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/api/auth/m_login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,6 +34,7 @@ export const Member_login = () => {
         const data = await response.json();
 
         setUser(data.user); // set user info
+        setRole(data.user.role); // set user role
         setLogin(true); // set login status
 
         router.push('/member/dashboard'); // redirect to dashboard

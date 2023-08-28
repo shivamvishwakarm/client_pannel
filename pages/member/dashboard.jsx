@@ -5,43 +5,104 @@ import Layout from '@/components/Layout';
 import { router } from 'next/router';
 import Image from 'next/image';
 import { useAuth } from '@/context/AuthContext';
-import Od_login from './member-login';
-
+import Member_login from './member-login';
 
 export const Dashboard = () => {
 
   const [showNav, setShowNav] = useState(false);
 
-  const { user, login, setLogin } = useAuth();
-  const od_user = {...user};
+  const {user, login, setLogin } = useAuth();
+  const od_user = { ...user };
   console.log('od_user:', od_user.role);
   console.log('image path:', od_user.image1);
 
-  if(!login) {
-    return <Od_login />
+  if (!login) {
+    return <Member_login />
   }
 
   return (
     <Layout>
-      <Image src="/csp.jpg" 
-      alt="A picture of white cats"
-      width={600}
-      height={600}
-      className="w-full rounded"
-      quality={100}
-      unoptimized={true}
-     />
+
+     <h1 className='not-italic'> Welcome, <span className='text-[#979797]	uppercase underline'> Mr. {od_user.name_of_entrepreneur}</span> </h1> 
+      <div>
+        <Image src="/csp.jpg"
+          alt="A picture of white cats"
+          width={600}
+          height={600}
+          className="w-full rounded"
+          quality={100}
+          unoptimized={true}
+        />
+      </div>
+
+      <div className='flex justify-between items-center'>
+        <div className='top-left'>
+          <Image src={od_user?.image2} unoptimized={true} alt="User" width={48} height={48} className="w-48 h-48  my-4 rectangle-full	" />
+        </div>
+        <div className='top-right'>
+          <table className='border border-black text-center'>
+            <tr>
+              <th className='border border-black mx-8'>Type of Enterprise</th>
+              <th className='border border-black mx-8'>Micro</th>
+              <th className='border border-black mx-8'>Small</th>
+              <th className='border border-black mx-8'>Medium</th>
+            </tr>
+            
+
+              <tr >
+                <td className='border border-black mx-8'>
+                  Franchisee
+                </td>
+                <td className='border border-black mx-8'>
+                  NA
+                </td>
+                <td className='border border-black mx-8'>
+                  NA
+                </td>
+                <td className='border border-black mx-8'>
+                  NA
+                </td>
+
+              </tr>
+              <tr >
+                <td className='border border-black mx-8'>
+                  Services
+                </td>
+                <td className='border border-black mx-8'>
+                  NA
+                </td>
+                <td className='border border-black mx-8'>
+                  NA
+                </td>
+                <td className='border border-black mx-8'>
+                  NA
+                </td>
+
+              </tr>
+              <tr className=''>
+                <td className='border border-black px-16'>
+                  KOID
+                </td>
+                <td className=' text-red-800 text-justify px-16'>
+                  {od_user.omt_id}
+                </td>
+              </tr>
+            
+          </table>
+        </div>
+
+      </div>
 
       <div className="container flex">
         <div className=" p-8">
           {/* User Image */}
-          <Image src={od_user?.image1} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48 my-4 rectangle-full border-2	border-black	" />
+          <Image src={od_user?.image1} unoptimized={true} alt="User" width={48} height={48} className="w-48 h-48 my-4 rectangle-full border-2	border-black	" />
           {/* <Image src={`/uploads/${od_user?.image2}`} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48  my-4 rectangle-full border-2	border-black	" /> */}
 
         </div>
         <div className="w-[50rem] p-8">
           {/* Account Statement */}
-          
+
           <p className="text-xl font-semibold mb-4 bg-green-300	px-2">ECSC GOVT. - My Account</p>
           <div className="space-y-4">
             <div className="border p-4 rounded-lg shadow-md">
@@ -104,14 +165,14 @@ export const Dashboard = () => {
 
                 <tbody>
                   {/* {ods.length > 0 && ods.map((od) => ( key={od._id} */}
-                    <tr  className="border-separate my-4 ">
-                      <td className='text-center'>{od_user.r_village}</td>
-                      <td className='text-center'>{od_user.r_block}</td>
-                      <td className='text-center'>{od_user.r_city}</td>
-                      <td className='text-center'>{od_user.r_district}</td>
-                      <td className='text-center'>{od_user.r_state}</td>
-                      <td className='text-center'>{od_user.r_pincode}</td>
-                    </tr>
+                  <tr className="border-separate my-4 ">
+                    <td className='text-center'>{od_user.r_village}</td>
+                    <td className='text-center'>{od_user.r_block}</td>
+                    <td className='text-center'>{od_user.r_city}</td>
+                    <td className='text-center'>{od_user.r_district}</td>
+                    <td className='text-center'>{od_user.r_state}</td>
+                    <td className='text-center'>{od_user.r_pincode}</td>
+                  </tr>
                 </tbody>
 
               </table>
@@ -133,14 +194,14 @@ export const Dashboard = () => {
 
                 <tbody>
                   {/* {ods.length > 0 && ods.map((od) => ( key={od._id} */}
-                    <tr  className="border-separate my-4">
+                  <tr className="border-separate my-4">
                     <td className='text-center'>{od_user.o_village}</td>
-                      <td className='text-center'>{od_user.o_block}</td>
-                      <td className='text-center'>{od_user.o_city}</td>
-                      <td className='text-center'>{od_user.o_district}</td>
-                      <td className='text-center'>{od_user.o_state}</td>
-                      <td className='text-center'>{od_user.o_pincode}</td>
-                    </tr>
+                    <td className='text-center'>{od_user.o_block}</td>
+                    <td className='text-center'>{od_user.o_city}</td>
+                    <td className='text-center'>{od_user.o_district}</td>
+                    <td className='text-center'>{od_user.o_state}</td>
+                    <td className='text-center'>{od_user.o_pincode}</td>
+                  </tr>
                 </tbody>
 
               </table>

@@ -1,8 +1,15 @@
 import Layout from '@/components/Layout'
 import React from 'react'
 import { useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import Od_login from './od-login';
 
 export const Open_new_account = () => {
+
+  const {login,setLogin} = useAuth(); // setting user info and login status in authContext (context api)
+
+  if(!login) return (<Od_login/>)
+
   return (
     <Layout>
       <div className="max-w-2xl	 mx-auto p-4">

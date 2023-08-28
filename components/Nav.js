@@ -11,7 +11,6 @@ export default function Nav({ show, userRole }) {
   const router = useRouter();
   const { pathname } = router;
 
-
   const renderLinks = () => {
     if (userRole === "admin") {
       // admin
@@ -161,11 +160,13 @@ export default function Nav({ show, userRole }) {
               Agent list
             </Link>
 
-            <button onClick={() => { 
-                  signOut();
-                 router.push("/admin")
-                }} 
-                 className={inactiveLink}>
+            <button
+              onClick={() => {
+                signOut();
+                router.push("/admin");
+              }}
+              className={inactiveLink}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -443,11 +444,13 @@ export default function Nav({ show, userRole }) {
               Support
             </Link>
 
-            <button onClick={() =>{
+            <button
+              onClick={() => {
                 signOut();
-              router.push("/od")}
-            } 
-              className={inactiveLink}>
+                router.push("/od");
+              }}
+              className={inactiveLink}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -467,6 +470,8 @@ export default function Nav({ show, userRole }) {
           </nav>
         </>
       );
+
+      // ********************            Memeber route       **********************************
     } else if (userRole === "member") {
       // member route
       return (
@@ -595,9 +600,9 @@ export default function Nav({ show, userRole }) {
             {/* Cash withdrawal */}
 
             <Link
-              href={"/member/transfer_money"}
+              href={"/member/withdrawal_money"}
               className={
-                pathname.includes("/member/transfer_money")
+                pathname.includes("/member/withdrawal_money")
                   ? activeLink
                   : inactiveLink
               }
@@ -609,7 +614,7 @@ export default function Nav({ show, userRole }) {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className={
-                  pathname.includes("/member/transfer_money")
+                  pathname.includes("/member/withdrawal_money")
                     ? activeIcon
                     : inactiveIcon
                 }
@@ -653,9 +658,9 @@ export default function Nav({ show, userRole }) {
             {/* Air Ticket route */}
 
             <Link
-              href={"/od/air_ticket"}
+              href={"/member/air_ticket"}
               className={
-                pathname.includes("/od/air_ticket") ? activeLink : inactiveLink
+                pathname.includes("/member/air_ticket") ? activeLink : inactiveLink
               }
             >
               <svg
@@ -665,7 +670,7 @@ export default function Nav({ show, userRole }) {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className={
-                  pathname.includes("/od/air_ticket")
+                  pathname.includes("/member/air_ticket")
                     ? activeIcon
                     : inactiveIcon
                 }
@@ -681,9 +686,9 @@ export default function Nav({ show, userRole }) {
 
             {/* IRCTC ROUTE */}
             <Link
-              href={"/od/irctc"}
+              href={"/member/irctc"}
               className={
-                pathname.includes("/od/irctc") ? activeLink : inactiveLink
+                pathname.includes("/member/irctc") ? activeLink : inactiveLink
               }
             >
               <svg
@@ -693,7 +698,7 @@ export default function Nav({ show, userRole }) {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className={
-                  pathname.includes("/od/irctc") ? activeIcon : inactiveIcon
+                  pathname.includes("/member/irctc") ? activeIcon : inactiveIcon
                 }
               >
                 <path
@@ -708,9 +713,9 @@ export default function Nav({ show, userRole }) {
             {/* PASSPORT ROUTE */}
 
             <Link
-              href={"/od/passport"}
+              href={"/member/passport"}
               className={
-                pathname.includes("/od/passport") ? activeLink : inactiveLink
+                pathname.includes("/member/passport") ? activeLink : inactiveLink
               }
             >
               <svg
@@ -720,7 +725,7 @@ export default function Nav({ show, userRole }) {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className={
-                  pathname.includes("/od/passport") ? activeIcon : inactiveIcon
+                  pathname.includes("/member/passport") ? activeIcon : inactiveIcon
                 }
               >
                 <path
@@ -734,6 +739,7 @@ export default function Nav({ show, userRole }) {
 
             <button
               onClick={() => {
+                router.push("/member")
                 signOut();
               }}
               className={inactiveLink}
@@ -764,7 +770,7 @@ export default function Nav({ show, userRole }) {
     <aside
       className={
         (show ? "left-0" : "-left-full") +
-        " top-0 text-gray-500 p-4 fixed w-full bg-slate-900	  md:static md:w-auto transition-all"
+        " top-0 text-gray-500 p-4 fixed w-full bg-slate-900  md:static md:w-auto transition-all"
       }
     >
       {renderLinks()}

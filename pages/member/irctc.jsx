@@ -1,16 +1,14 @@
 import Layout from '@/components/Layout'
 import Ticket from '@/components/Ticket';
 import React from 'react'
+import Member_login from './member-login';
 import { useAuth } from '@/context/AuthContext';
-import Od_login from './od-login';
-
-
 
 export const Irctc = () => {
   const {login, setLogin } = useAuth();
 
 if (!login) {
-  return <Od_login />
+  return <Member_login />
 }
 
   return (

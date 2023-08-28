@@ -1,7 +1,8 @@
 import Layout from '@/components/Layout'
 import React from 'react'
 import { useState } from 'react';
-
+import Member_login from './member-login';
+import { useAuth } from '@/context/AuthContext';
 export const Transfer_money = () => {
 
     const [beneficiaryName, setBeneficiaryName] = useState('');
@@ -10,18 +11,23 @@ export const Transfer_money = () => {
     const [selectedBank, setSelectedBank] = useState('');
     const [ifscCode, setIFSCCode] = useState('');
     const [amount, setAmount] = useState('');
+    const {login, setLogin } = useAuth();
+
+if (!login) {
+  return <Member_login />
+}
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission here
-        console.log({
-            beneficiaryName,
-            beneficiaryAccountNo,
-            confirmAccountNo,
-            selectedBank,
-            ifscCode,
-            amount,
-        });
+        // console.log({
+        //     beneficiaryName,
+        //     beneficiaryAccountNo,
+        //     confirmAccountNo,
+        //     selectedBank,
+        //     ifscCode,
+        //     amount,
+        // });
     };
 
     const bankOptions = [

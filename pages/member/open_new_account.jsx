@@ -1,8 +1,16 @@
 import Layout from '@/components/Layout'
 import React from 'react'
 import { useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import Member_login from './member-login';
+
 
 export const Open_new_account = () => {
+  const {login, setLogin } = useAuth();
+
+if (!login) {
+  return <Member_login />
+}
   return (
     <Layout>
       <div className="max-w-2xl	 mx-auto p-4">

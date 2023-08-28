@@ -2,9 +2,17 @@ import React from "react";
 import Layout from "@/components/Layout";
 import { useState } from "react";
 import axios from 'axios';
+import { useAuth } from '@/context/AuthContext';
+import Member_login from "../member/member-login";
+
 
 export default function Addhar() {
 
+  const {login, setLogin } = useAuth();
+
+  if (!login) {
+    return <Member_login />
+  }
 //   const [formData, setFormData] = useState({
 //     senderAddress: '',
 //     senderEmail: '',
