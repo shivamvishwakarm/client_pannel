@@ -65,8 +65,8 @@ console.log("image2: ", editOd.image2);
       if(response.ok) {
     
       const data = await response.json();
-      console.log(data);
-      // router.push("/admin/odLogin");
+      // console.log(data);
+      router.push("/admin/odLogin");
 
       } else {
         console.error("Failed to update od", response.statusText);

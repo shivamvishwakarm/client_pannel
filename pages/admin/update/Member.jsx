@@ -11,7 +11,7 @@ export const Member = () => {
 
   const router = useRouter();
 
-console.log('editMember', editMember)
+// console.log('editMember', editMember)
   // saving form to database
 
   const [formData, setFormData] = useState({
@@ -70,7 +70,7 @@ console.log('editMember', editMember)
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Member updated:", data);
+        // console.log("Member updated:", data);
         router.push("/admin/memberLogin");
       } else {
         console.error("Failed to update member:", response.statusText);
