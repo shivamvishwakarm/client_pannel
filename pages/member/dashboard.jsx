@@ -35,8 +35,8 @@ export const Dashboard = () => {
       <div className="container flex">
         <div className=" p-8">
           {/* User Image */}
-          <Image src={`/uploads/${od_user?.image1}`} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48 my-4 rectangle-full border-2	border-black	" />
-          <Image src={`/uploads/${od_user?.image2}`} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48  my-4 rectangle-full border-2	border-black	" />
+          <Image src={od_user?.image1} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48 my-4 rectangle-full border-2	border-black	" />
+          {/* <Image src={`/uploads/${od_user?.image2}`} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48  my-4 rectangle-full border-2	border-black	" /> */}
 
         </div>
         <div className="w-[50rem] p-8">
