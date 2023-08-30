@@ -21,7 +21,6 @@ export default function AgentForm() {
     e.preventDefault();
 
     try {
-      console.log("before api call")
       const response = await fetch('/api/agent/new/route', {
         method: 'POST',
         headers: {

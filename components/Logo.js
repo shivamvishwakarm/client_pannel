@@ -2,6 +2,7 @@ import Link from "next/link";
 
 export default function Logo({userRole}) {
   return (
+   
     <Link href={"/"} className="flex gap-1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -18,6 +19,6 @@ export default function Logo({userRole}) {
           />
       </svg>
       <span className="">{userRole} Pannel</span>
-    </Link>
+    </Link> 
   );
 }
