@@ -32,12 +32,13 @@ export const Member_login = () => {
       if (response.ok) {
 
         const data = await response.json();
+        console.log(data);
 
         setUser(data.user); // set user info
-        setRole(data.user.role); // set user role
+      await  setRole('member'); // set user role
         setLogin(true); // set login status
 
-        router.push('/member/dashboard'); // redirect to dashboard
+        // router.push('/member/dashboard'); // redirect to dashboard
 
       } else {
         const data = await response.json();

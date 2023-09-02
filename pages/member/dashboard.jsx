@@ -13,8 +13,8 @@ export const Dashboard = () => {
 
   const {user, login, setLogin } = useAuth();
   const od_user = { ...user };
-  console.log('od_user:', od_user.role);
-  console.log('image path:', od_user.image1);
+  
+  // console.log('od_user:', user?.role);
 
   if (!login) {
     return <Member_login />

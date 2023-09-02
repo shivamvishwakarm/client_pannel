@@ -28,16 +28,6 @@ export default async function handler(req, res) {
       return res.status(401).json({ message: 'Invalid password' });
     }
 
-    // Create a JWT token with user data
-    // const token = jwt.sign(
-    //   {
-    //     userId: user._id,
-    //     userName: user.customer_id,
-    //     password: user.password,
-    //   },
-    //   'apprequirepass',
-    //   { expiresIn: '1h' } // Token expires in 1 hour
-    // );
 
     res.status(200).json({ message: 'Logged in successfully', user: user});
   } catch (error) {
