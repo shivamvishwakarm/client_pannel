@@ -184,7 +184,7 @@ console.log("image2: ", editOd.image2);
                   value={editOd.email_id}
                   onChange={(e) => { setOdData({ ...odData, email_id: e.target.value }) }}
                   type="email"
-                  className="mt-1 opacity-50 disabled cursor-not-allowed  p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
+                  className="mt-1 opacity-50  cursor-not-allowed  p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                   placeholder="Email Id"
                 />
               </div>

@@ -136,7 +136,7 @@ export const Member = () => {
                   value={editMember.email_id}
                   onChange={(e) => { setFormData({ ...formData, email_id: e.target.value }) }}
                   type="email"
-                  className="disabled cursor-not-allowed  opacity-40 mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
+                  className=" cursor-not-allowed  opacity-40 mt-1 p-2 block w-full border rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300"
                   placeholder="Email Id"
                 />
               </div>
