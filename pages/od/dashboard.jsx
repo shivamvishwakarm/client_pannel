@@ -25,7 +25,7 @@ export const Dashboard = () => {
     <Layout>
       <div>
         <Image src="/csp.jpg"
-          alt="A picture of white cats"
+          alt="csp logo"
           width={600}
           height={600}
           className="w-full rounded"
@@ -34,11 +34,11 @@ export const Dashboard = () => {
         />
       </div>
 
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-center bg-white mt-4 px-4'>
         <div className='top-left'>      
-            <Image src={od_user?.image2} unoptimized={true} alt="User" width={48} height={48} className="w-48 h-48  my-4 rectangle-full	" />
+            <Image src={od_user?.image2} unoptimized={true} alt="User" width={48} height={48} className="w-48  my-4 rectangle-full	" />
         </div>
-        <div className='top-right'>
+        <div className='top-right '>
           <table className='border border-black text-center'>
             <thead>
               <tr >
@@ -46,7 +46,7 @@ export const Dashboard = () => {
                   Customer id: 
                 </td>
                 <td className='border border-black mx-8'>
-                  {od_user.customer_id}</td>
+                  {od_user?.customer_id}</td>
                
               </tr>
               <tr >
@@ -54,16 +54,16 @@ export const Dashboard = () => {
                   Account No.:
                 </td>
                 <td className='border border-black mx-8'>
-                  {od_user.bank_ac}
+                  {od_user?.bank_ac}
                 </td>
                 
               </tr>
-              <tr className=''>
+              <tr>
               <td className='border border-black px-16'>
-                   Avaliable Balance:
+              Available Balance:
                 </td>
                 <td className='border border-black text-red-800  px-16'>
-                  {od_user.avialable_balance}/- INR
+                {od_user.avialable_balance} INR
                 </td>
               </tr>
             </thead>
@@ -72,64 +72,75 @@ export const Dashboard = () => {
 
       </div>
 
-      <div className="container flex">
-        <div className=" p-8">
+      <div className=" lg:flex border border-black bg-white border ">
+        <div className=" p-8 ">
           {/* User Image */}
-          <Image src={od_user?.image1} unoptimized={true} alt="User" width={48} height={48} className="w-48 h-48 my-4 rectangle-full border-2	border-black	" />
-
+          <Image src={od_user?.image1} unoptimized={true} alt="User" width={50} height={50} className="w-48 my-4 rectangle-full border-2 border-black		p-1" />
+          <h3 className='px-2 text-xl'> Account Name: {od_user.name_of_entrepreneur}</h3>
         </div>
-        <div className="w-[50rem] p-8">
+        <div className="w-[50rem]  p-8 ">
           {/* Account Statement */}
 
+          <div className="space-y-4 border border-green-400 ">
           <p className="text-xl font-semibold mb-4 bg-green-300	px-2">ECSC GOVT. - My Account</p>
-          <div className="space-y-4">
-            <div className="border p-4 rounded-lg shadow-md">
+            <div className=" p-4 rounded-lg shadow-md">
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Account Holder Name: </h4>
                 <p className='px-2'>{od_user.name_of_entrepreneur}</p>
 
               </div>
+              
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Aadhaar Number: </h4>
                 <p className='px-2'>{od_user.aadhar_no}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>PAN Number: </h4>
                 <p className='px-2'>{od_user.pan_no}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Bank Name: </h4>
                 <p className='px-2'>{od_user.bank_name}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Father Name: </h4>
                 <p className='px-2'>{od_user.father_name}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Date of Birth: </h4>
                 <p className='px-2'> {od_user.date_of_birth}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Gender: </h4>
                 <p className='px-2'>{od_user.gender}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Physically Handicapped: </h4>
                 <p className='px-2'>{od_user.physically_handicapped}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Name of Enterprise: </h4>
                 <p className='px-2'>{od_user.name_of_enterprise}</p>
               </div>
+              <hr />
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Type of Organization: </h4>
                 <p className='px-2'>{od_user.type_of_org}</p>
               </div>
+              <hr />
 
               <h3 className='font-bold bx-4 py-2'>Residential Address: </h3>
+              <hr />
               <table className="table-auto border-spacing-px w-[40rem] border border-black-700">
 
-                <thead>
+                <thead className='border border-black-700 my-2'>
                   <tr>
                     <th>Village</th>
                     <th>Block</th>
@@ -139,11 +150,12 @@ export const Dashboard = () => {
                     <th>Pin</th>
                   </tr>
                 </thead>
+              
 
 
                 <tbody>
-                  {/* {ods.length > 0 && ods.map((od) => ( key={od._id} */}
-                  <tr className="border-separate my-4 ">
+        
+                  <tr className="border-separate my-4 py-2">
                     <td className='text-center'>{od_user.r_village}</td>
                     <td className='text-center'>{od_user.r_block}</td>
                     <td className='text-center'>{od_user.r_city}</td>
@@ -151,14 +163,18 @@ export const Dashboard = () => {
                     <td className='text-center'>{od_user.r_state}</td>
                     <td className='text-center'>{od_user.r_pincode}</td>
                   </tr>
+
                 </tbody>
 
               </table>
 
               <h3 className='font-bold py-4 px-2'>Official Address: </h3>
+              <hr />
+
               <table className="table-auto border-spacing-px w-[40rem] border border-black-500">
 
-                <thead>
+                <thead className='border border-black-700'>
+
                   <tr>
                     <th>Village</th>
                     <th>Block</th>
@@ -167,11 +183,10 @@ export const Dashboard = () => {
                     <th>State</th>
                     <th>Pin</th>
                   </tr>
+
                 </thead>
 
-
                 <tbody>
-                  {/* {ods.length > 0 && ods.map((od) => ( key={od._id} */}
                   <tr className="border-separate my-4">
                     <td className='text-center'>{od_user.o_village}</td>
                     <td className='text-center'>{od_user.o_block}</td>

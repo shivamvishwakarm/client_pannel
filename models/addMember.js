@@ -134,18 +134,25 @@ const AddMemeber = new Schema({
     require: true,
   },
 
-  image1: {
+  image1: { // image1 is the profile image of the member
     type: String,
     required: true,
   },
 
-  image2: {
+  image2: { // image2 is the image of the bank logo
+    type: String,
+    required: true,
+  },
+  img1_public_id: { // public id is the id of the image stored in the cloudinary for deleting the image
+    type: String,
+    required: true,
+  },
+  img2_public_id: { // public id is the id of the image stored in the cloudinary for deleting the image
     type: String,
     required: true,
   },
 });
 
-// const Member = model("Member", AddMemeber);
 const Member = models.Member || model('Member', AddMemeber);
 
 

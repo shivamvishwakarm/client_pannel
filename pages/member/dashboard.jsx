@@ -16,6 +16,8 @@ export const Dashboard = () => {
   
   // console.log('od_user:', user?.role);
 
+
+  // if user has not logged in, redirect to member login page
   if (!login) {
     return <Member_login />
   }
@@ -37,7 +39,7 @@ export const Dashboard = () => {
 
       <div className='flex justify-between items-center'>
         <div className='top-left'>
-          <Image src={od_user?.image2} unoptimized={true} alt="User" width={48} height={48} className="w-48 h-48  my-4 rectangle-full	" />
+          <Image src={od_user?.image2} unoptimized={true} alt="User" width={48} height={48} className="w-48 my-4 rectangle-full	" />
         </div>
         <div className='top-right'>
           <table className='border border-black text-center'>
@@ -93,63 +95,78 @@ export const Dashboard = () => {
 
       </div>
 
-      <div className="container flex">
+      <div className=" lg:flex p-10 border border-black bg-white">
         <div className=" p-8">
           {/* User Image */}
-          <Image src={od_user?.image1} unoptimized={true} alt="User" width={48} height={48} className="w-48 h-48 my-4 rectangle-full border-2	border-black	" />
-          {/* <Image src={`/uploads/${od_user?.image2}`} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48  my-4 rectangle-full border-2	border-black	" /> */}
+          <Image src={od_user?.image1} unoptimized={true} alt="User" width={50} height={50} className="w-48 h-48 my-4 rectangle-full border-2	border-black	p-1" />
+          
+          <h3 className='px-2 text-slate-600	font-mono text-2xl'>{od_user.name_of_entrepreneur}</h3>
 
         </div>
-        <div className="w-[50rem] p-8">
+        <div className="w-[50rem] mx-8 border border-blue-400 rounded">
           {/* Account Statement */}
 
-          <p className="text-xl font-semibold mb-4 bg-green-300	px-2">ECSC GOVT. - My Account</p>
+          <p className="text-xl font-semibold mb-4 bg-blue-300	p-2">ECSC GOVT. - My Account</p>
           <div className="space-y-4">
-            <div className="border p-4 rounded-lg shadow-md">
-              <div className='flex px-2 py-2'>
-                <h4 className='font-bold'>Account Holder Name: </h4>
-                <p className='px-2'>{od_user.name_of_entrepreneur}</p>
-
-              </div>
+            <div className="p-4 rounded-lg shadow-md">
+              
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Aadhaar Number: </h4>
                 <p className='px-2'>{od_user.aadhar_no}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>PAN Number: </h4>
                 <p className='px-2'>{od_user.pan_no}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Bank Name: </h4>
                 <p className='px-2'>{od_user.bank_name}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Father Name: </h4>
                 <p className='px-2'>{od_user.father_name}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Date of Birth: </h4>
                 <p className='px-2'> {od_user.date_of_birth}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Gender: </h4>
                 <p className='px-2'>{od_user.gender}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Physically Handicapped: </h4>
                 <p className='px-2'>{od_user.physically_handicapped}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Name of Enterprise: </h4>
                 <p className='px-2'>{od_user.name_of_enterprise}</p>
               </div>
+              <hr />
+
               <div className='flex px-2 py-2'>
                 <h4 className='font-bold'>Type of Organization: </h4>
                 <p className='px-2'>{od_user.type_of_org}</p>
               </div>
+              <hr />
 
               <h3 className='font-bold bx-4 py-2'>Residential Address: </h3>
-              <table className="table-auto border-spacing-px w-[40rem] border border-black-700">
+              <hr />
+              <table className="table-auto border-spacing-px w-[40rem]">
 
                 <thead>
                   <tr>
@@ -205,6 +222,27 @@ export const Dashboard = () => {
                 </tbody>
 
               </table>
+
+            
+            <div className='border  border-black mt-2'>
+              <div className='flex px-2 py-2'>
+                <h4 className='font-bold'>Bank Name: </h4>
+                <p className='px-2'>{od_user.bank_name}</p>
+              </div>
+              <div className='flex px-2 py-2'>
+                <h4 className='font-bold'>Branch Detail: </h4>
+                <p className='px-2'>{od_user.branch_name}</p>
+              </div>
+              <div className='flex px-2 py-2'>
+                <h4 className='font-bold'>Account No:  </h4>
+                <p className='px-2'>{od_user.bank_ac}</p>
+              </div>
+              <div className='flex px-2 py-2'>
+                <h4 className='font-bold'>Payment Receive: </h4>
+                <p className='px-2'>{od_user.payment_received}</p>
+              </div>
+            </div>
+
             </div>
           </div>
         </div>

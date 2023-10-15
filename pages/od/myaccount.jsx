@@ -26,7 +26,7 @@ export const Myaccount = () => {
             </div>
             <div className='flex px-2 py-2'>
               <h4 className='font-bold'>Avialable Balance: </h4>
-              <p className='px-2'>{od_user.avialable_balance}/- INR</p>
+              <p className='px-2'>{od_user.avialable_balance} INR</p>
             </div>
             <div className='flex px-2 py-2'>
               <h4 className='font-bold'>Bank: </h4>

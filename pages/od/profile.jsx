@@ -25,7 +25,7 @@ export const Profile = () => {
       quality={100}
       unoptimized={true}
      />
-      <div className="container flex">
+      <div className="flex flex-col lg:flex-row">
         <div className=" p-8">
           {/* User Image */}
           <Image src={od_user?.image1} unoptimized={true} alt="User" width={48} height={48}  className="w-48 h-48 rectangle-full border-2	border-black	" />
@@ -38,7 +38,7 @@ export const Profile = () => {
           <div className="border p-4 rounded-lg shadow-md">
             <div className='flex px-2 py-2'>
               <h4 className='font-bold'>Name: </h4>
-              <p className='px-2'>MR. {od_user.name_of_entrepreneur}</p>
+              <p className='px-2'>{od_user.name_of_entrepreneur}</p>
 
             </div>
             <div className='flex px-2 py-2'>

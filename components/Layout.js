@@ -18,7 +18,7 @@ export default function Layout({children, userRole}) {
   // const role =  "admin";
 
   return (
-    <div className="bg-bgGray min-h-screen ">
+    <div className="bg-[#f1f1ff]">
       <div className="block md:hidden flex items-center p-4">
         <button onClick={() => setShowNav(true)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

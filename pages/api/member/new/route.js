@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import streamifier from "streamifier";
 
 import connectDB from "@/lib/mongoose"; // Import your MongoDB connection
-import Member from "@/models/addMember"; // Import your Mongoose model
+import Member from "@/models/addMember"; // Import your Mongoose model 
 
 dotenv.config();
 
@@ -71,6 +71,8 @@ export default async function handler(req, res) {
     // Wait for all uploads to complete
     const uploadResults = await Promise.all(uploadPromises);
 
+    // console.log("uploadResults: ", uploadResults);
+
     // Save data to MongoDB
     const newEntry = new Member({
       // ... fill in your data fields ...
@@ -108,6 +110,8 @@ export default async function handler(req, res) {
       bank_ac: req.body.bank_ac,
       image1: uploadResults[0].secure_url, // Assuming image1 is uploaded first
       image2: uploadResults[1].secure_url, // Assuming image2 is uploaded second
+      img1_public_id: uploadResults[0].public_id, // storing public id for deletion
+      img2_public_id: uploadResults[1].public_id, // storing public id for deletion
     });
 
     await newEntry.save();
