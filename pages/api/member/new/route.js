@@ -77,6 +77,7 @@ export default async function handler(req, res) {
     const newEntry = new Member({
       // ... fill in your data fields ...
       role: req.body.role,
+      visible: req.body.visible,
       omt_id: req.body.omt_id,
       password: req.body.password,
       email_id: req.body.email_id,

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const updatedData = req.body; // Assuming the updated data is sent in the request body
 
       // Ensure you have the necessary logic to identify the member to update
-      const memberId = updatedData._id; // Replace this with the actual way you identify the member
+      const memberId = updatedData._id; // Assuming the member ID is sent along with the updated data
 
       // Update the member record
       const updatedMember = await AddMember.findByIdAndUpdate(

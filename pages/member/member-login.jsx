@@ -5,12 +5,13 @@ import { LoginForm } from '@/components/login';
 import { useAuth } from '@/context/AuthContext';
 
 
+// DEMO LOGIC is here;
 
 export const Member_login = () => {
  
   const { setRole,login, setUser, setLogin} = useAuth(); // setting user info and login status in authContext (context api)
 
-
+let visible = true;
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -32,11 +33,18 @@ export const Member_login = () => {
       if (response.ok) {
 
         const data = await response.json();
-        console.log(data);
+        
+        if(!data.user.visible){
+          alert('you are blocked by admin');
+        }
 
-        setUser(data.user); // set user info
+        else{
+          setUser(data.user); // set user info
+
       await  setRole('member'); // set user role
         setLogin(true); // set login status
+        }
+        
 
         // router.push('/member/dashboard'); // redirect to dashboard
 

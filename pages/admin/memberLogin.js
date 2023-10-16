@@ -2,6 +2,7 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 import { useRouter } from "next/router"; 
 import { useAdmin } from "@/context/AdminContext"; // import the context
 import AdminLogin from "./admin-login"; // import the login page
@@ -11,7 +12,9 @@ export default function MemberLogin() {
   const [members, setMembers] = useState([]);
   const [oneMember, setOneMember] = useState({});
   const {login, setEditMember } = useAdmin(); // get the login state from the context
+  const [visible, setVisible] = useState(false);
 
+   
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
 
@@ -58,6 +61,23 @@ export default function MemberLogin() {
     }
   };
 
+  // update the visible status of the member
+  const hadleVisible = async (member) => {
+    try {
+      if (visible) {
+        // Unlike the post
+        await axios.post('/api/visible', { id: member._id, visible: false });
+      } else {
+        // Like the post
+        await axios.post('/api/invisible', { id: member._id, visible: true });
+      }
+
+      setVisible(!visible); // Toggle the like state in the UI
+    } catch (error) {
+      console.error('Error toggling like:', error);
+    }
+
+  };
   
 
   if(!login){ // if the user is not logged in, show the login page
@@ -121,10 +141,13 @@ export default function MemberLogin() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
+                    
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
-                    stroke="green"
-                    className="w-6 h-6"
+                    stroke= {member.visible ? "green" : "red"}
+                    className="w-6 h-6 cursor-pointer"
+                    onClick={() => hadleVisible(member)}
+                    
                   >
                     <path
                       strokeLinecap="round"
