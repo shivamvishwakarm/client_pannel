@@ -9,6 +9,7 @@ export default function ProductForm() {
 
   const [memberData, setMemberData] = useState({
     role: 'member',
+    visible: true,
     omt_id: '',
     password: '',
     email_id: '',
