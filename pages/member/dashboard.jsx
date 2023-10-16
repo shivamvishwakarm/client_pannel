@@ -25,7 +25,7 @@ export const Dashboard = () => {
   return (
     <Layout>
 
-     <h1 className='not-italic'> Welcome, <span className='text-[#979797]	uppercase underline'> Mr. {od_user.name_of_entrepreneur}</span> </h1> 
+     <h1 className='not-italic'> Welcome, <span className='text-[#979797]	uppercase underline'>{od_user.name_of_entrepreneur}</span> </h1> 
       <div>
         <Image src="/csp.jpg"
           alt="A picture of white cats"
