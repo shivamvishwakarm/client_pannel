@@ -6,6 +6,10 @@ const OD = new Schema({
       type: String,
       require: true,
     },
+    visible: {
+      type: Boolean,
+      require: true,
+    },
     customer_id: {
       type: String,
       required: true,

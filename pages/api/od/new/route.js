@@ -77,6 +77,7 @@ export default async function handler(req, res) {
     const newEntry = new odMember({
       // ... fill in your data fields ...
       role: req.body.role,
+      visible: req.body.visible,
       customer_id: req.body.customer_id,
       password: req.body.password,
       bank_name: req.body.bank_name,

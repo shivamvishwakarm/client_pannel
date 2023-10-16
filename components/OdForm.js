@@ -11,6 +11,7 @@ export default function OdForm() {
   // changes needed in image
   const [odData, setOdData] = useState({
     role:'od',
+    visible: true,
     customer_id: '',
     password: '',
     bank_name: '',

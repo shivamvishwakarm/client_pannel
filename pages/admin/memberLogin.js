@@ -74,7 +74,7 @@ export default function MemberLogin() {
 
       setVisible(!visible); // Toggle the like state in the UI
     } catch (error) {
-      console.error('Error toggling like:', error);
+      console.error('Error toggling visiblity:', error);
     }
 
   };

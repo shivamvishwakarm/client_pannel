@@ -29,9 +29,17 @@ export const Od_login = () => {
 
         const data = await response.json();
 
-        setUser(data.user); // set user info
-        setRole(data.user.role)
-        setLogin(true); // set login status
+        if(!data.user.visible){
+          alert('you are blocked by admin');
+        }
+
+        else{
+          setUser(data.user); // set user info
+          setRole(data.user.role)
+          setLogin(true); // set login status
+        }
+
+        
 
         router.push('/od/dashboard'); // redirect to dashboard
 

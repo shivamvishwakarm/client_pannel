@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 import { useAdmin } from "@/context/AdminContext";
 import AdminLogin from "./admin-login";
 import { useRouter } from "next/router";
@@ -10,6 +11,7 @@ export default function OdLogin() {
   const router = useRouter();
   const [ods, setOds] = useState([]);
   const {login, setEditOd} = useAdmin(); // get the login state from the context
+  const [visible, setVisible] = useState(false);
 
 
   const handleUpdateClick = (member) => {
@@ -55,7 +57,23 @@ export default function OdLogin() {
     }
   };
 
+  // toggle visiblity of a od member
+  const hadleVisible = async (od) => {
+    try {
+      if (visible) {
+        // Unlike the post
+        await axios.post('/api/od/visible', { id: od._id, visible: false });
+      } else {
+        // Like the post
+        await axios.post('/api/od/invisible', { id: od._id, visible: true });
+      }
 
+      setVisible(!visible); // Toggle the like state in the UI
+    } catch (error) {
+      console.error('Error toggling visiblity:', error);
+    }
+
+  };
  
 
   if(!login){ // if the user is not logged in, show the login page
@@ -107,14 +125,16 @@ export default function OdLogin() {
             <td>{od.aadhar_no}</td>
             <td>{od.pan_no}</td>
             <td>
+              {/* status svg icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke="green"
-                className="w-6 h-6"
-              >
+                stroke= {od.visible ? "green" : "red"}
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => hadleVisible(od)}
+                >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
