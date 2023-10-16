@@ -5,6 +5,10 @@ const AddMemeber = new Schema({
     type: String,
     require: true,
   },
+  visible: {
+    type: Boolean,
+    require: true,
+  },
   omt_id: {
     type: String,
     required: true,
