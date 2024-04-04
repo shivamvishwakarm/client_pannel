@@ -417,6 +417,56 @@ export default function Nav({ show, userRole }) {
               Passport
             </Link>
 
+            
+            {/* DTH and mobile */}
+            <Link
+              href={""}
+            
+            >
+          
+              DTH & Mobile
+            </Link>
+
+            {/* Online Form */}
+            <Link href={""}>Online Form</Link>
+
+            {/* LIC & Premium */}
+
+            <Link href={""}>LIC & Premium</Link>
+
+            {/* Ayushman Bharat */}
+
+            <Link href={""}>Ayushman Bharat</Link>
+
+            {/* Cast, Income & Residence */}
+
+            <Link href={""}>Cast, Income & Residence</Link>
+
+            {/* PM pension */}
+
+            <Link href={""}>PM pension</Link>
+
+            {/* Kishan Panjikaran */}
+
+            <Link href={""}>Kishan Panjikaran</Link>
+
+            {/* Life Certificate for Pensioners */}
+
+            <Link href={""}>Life Certificate</Link>
+
+            {/* Bill Payment */}
+
+            <Link href={""}>Bill Payment</Link>
+
+            {/* PM Kisan Yogna */}
+
+            <Link href={""}>PM Kisan Yogna</Link>
+
+            {/* Driving License Apply */}
+
+            <Link href={""}>Driving License</Link>
+
+
             {/* SUPPORT ROUTE */}
 
             <Link
@@ -566,6 +616,35 @@ export default function Nav({ show, userRole }) {
               New aadhar card
             </Link>
 
+            {/* PAN Card */}
+
+            <Link
+              href={"/member/addhar"}
+              className={
+                pathname.includes("/member/addhar") ? activeLink : inactiveLink
+              }
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className={
+                  pathname.includes("/member/addhar")
+                    ? activeIcon
+                    : inactiveIcon
+                }
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+                />
+              </svg>
+              PAN card
+            </Link>
+
             {/* Cash Deposite */}
 
             <Link
@@ -628,6 +707,8 @@ export default function Nav({ show, userRole }) {
               Cash Withdrawal
             </Link>
 
+            
+
             {/* Loan Apply */}
 
             <Link
@@ -660,7 +741,9 @@ export default function Nav({ show, userRole }) {
             <Link
               href={"/member/air_ticket"}
               className={
-                pathname.includes("/member/air_ticket") ? activeLink : inactiveLink
+                pathname.includes("/member/air_ticket")
+                  ? activeLink
+                  : inactiveLink
               }
             >
               <svg
@@ -715,7 +798,9 @@ export default function Nav({ show, userRole }) {
             <Link
               href={"/member/passport"}
               className={
-                pathname.includes("/member/passport") ? activeLink : inactiveLink
+                pathname.includes("/member/passport")
+                  ? activeLink
+                  : inactiveLink
               }
             >
               <svg
@@ -725,7 +810,9 @@ export default function Nav({ show, userRole }) {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className={
-                  pathname.includes("/member/passport") ? activeIcon : inactiveIcon
+                  pathname.includes("/member/passport")
+                    ? activeIcon
+                    : inactiveIcon
                 }
               >
                 <path
@@ -737,9 +824,57 @@ export default function Nav({ show, userRole }) {
               Passport
             </Link>
 
+            {/* DTH and mobile */}
+            <Link
+              href={""}
+            
+            >
+          
+              DTH & Mobile
+            </Link>
+
+            {/* Online Form */}
+            <Link href={""}>Online Form</Link>
+
+            {/* LIC & Premium */}
+
+            <Link href={""}>LIC & Premium</Link>
+
+            {/* Ayushman Bharat */}
+
+            <Link href={""}>Ayushman Bharat</Link>
+
+            {/* Cast, Income & Residence */}
+
+            <Link href={""}>Cast, Income & Residence</Link>
+
+            {/* PM pension */}
+
+            <Link href={""}>PM pension</Link>
+
+            {/* Kishan Panjikaran */}
+
+            <Link href={""}>Kishan Panjikaran</Link>
+
+            {/* Life Certificate for Pensioners */}
+
+            <Link href={""}>Life Certificate</Link>
+
+            {/* Bill Payment */}
+
+            <Link href={""}>Bill Payment</Link>
+
+            {/* PM Kisan Yogna */}
+
+            <Link href={""}>PM Kisan Yogna</Link>
+
+            {/* Driving License Apply */}
+
+            <Link href={""}>Driving License</Link>
+
             <button
               onClick={() => {
-                router.push("/member")
+                router.push("/member");
                 signOut();
               }}
               className={inactiveLink}

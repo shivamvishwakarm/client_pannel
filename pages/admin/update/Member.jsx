@@ -99,7 +99,7 @@ export const Member = () => {
     <Layout>
       <div className="flex">
         <div className="max-w-md p-6  rounded-lg max-w-fit shadow-md ">
-          {/* h1  */}
+         
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -508,9 +508,10 @@ export const Member = () => {
             <Image src={editMember?.image1} unoptimized={true} alt="Picture" width={48} height={48}  className="w-48 h-48 rectangle-full my-4 border-2	border-black	" />
               Image1 (Profile Image)
             </div>
-            {/* uncomment if you want to add upload image input */}
+            {/* Todo: Edit or add new image */}
+          
 
-            {/* <div className="mt-4">
+            <div className="mt-4">
               <label className="text-sm font-medium text-gray-700">
                 Picture (Upload)
               </label>
@@ -518,13 +519,16 @@ export const Member = () => {
 
                 onChange={handleImage1Change}
                 type="file" className="mt-1 block w-full" />
-            </div> */}
+            </div>
 
+
+
+            {/* Todo: Edit or add new image */}
                  <div >
             <Image src={editMember?.image2} unoptimized={true} alt="Logo" width={48} height={48}  className="w-48 h-48 rectangle-full border-2 my-4	border-black	" />
             </div>
             Image2 (Logo Image)
-{/* 
+
             <div className="mt-4">
               <label className="text-sm font-medium text-gray-700">
                 Picture (Upload two)
@@ -533,7 +537,7 @@ export const Member = () => {
 
                 onChange={handleImage2Change}
                 type="file" className="mt-1 block w-full" />
-            </div> */}
+            </div>
 
             <div className="mt-6">
               <button

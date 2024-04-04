@@ -459,7 +459,7 @@ const UpdateMember = () => {
 
           <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
-              Picture (Upload two)
+              Logo (Upload two)
             </label>
             <input
             value={member.image2}
