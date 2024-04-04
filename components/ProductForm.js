@@ -483,7 +483,7 @@ export default function ProductForm() {
 
 
 
-         {/* work in process */}
+         {/* Upload first image */}
 
          <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
@@ -496,7 +496,7 @@ export default function ProductForm() {
             />
           </div>
 
-        {/* uncomment it to add second image option and also do change it schema and useState */}
+        {/* Upload second image */}
 
           <div className="mt-4">
             <label className="text-sm font-medium text-gray-700">
