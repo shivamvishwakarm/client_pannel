@@ -1,10 +1,10 @@
 import React from 'react'
-import Od_login from './od/od-login';
+import Member_login from './member/member-login';
 
  export  const index = () => {
   return (
     <div>
-        <Od_login />
+        <Member_login/>
     </div>
   )
 }
