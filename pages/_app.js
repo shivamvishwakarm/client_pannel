@@ -9,7 +9,7 @@ export default function App({Component, pageProps: { session, ...pageProps }}) {
   return (
     <AdminProvider>
     <AuthProvider> {/* Wrap with your AuthProvider */}
-      <Component {...pageProps} />
+      {/* <Component {...pageProps} /> */}
       <Analytics />
       <SpeedInsights />
     </AuthProvider>
